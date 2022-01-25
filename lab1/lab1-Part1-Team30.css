@@ -1,0 +1,18 @@
+
+/*basic border for table, feel free to change*/
+table, th, td {
+    border:1px solid black;
+  }
+
+/*no border for first column (radio buttons)*/
+  table, th, td:first-child {
+    border: none;
+  }
+
+table img{
+    width:200px;
+    height: auto;
+  }
+
+
+
