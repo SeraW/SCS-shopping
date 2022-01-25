@@ -16,7 +16,7 @@ tr:nth-child(even){background-color: #1a1a1a;}
 
 tr:hover {background-color: #343434;}
 
-td, th {
+td, th{
 	padding:5px;
 	border: 2px solid grey;
 }
@@ -24,6 +24,7 @@ td, th {
 /*no border for first column (radio buttons)*/
 table, th, td:first-child {
     border: none;
+	width:200px;
 }
 
 img{
