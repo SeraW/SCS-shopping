@@ -2,13 +2,35 @@
   padding-top:5%  
 }
 
+body{
+    background-color: #242526;
+}
+
+h1{
+    color:white
+}
+
+p {
+    color: #e0e0e0
+}
+
+.input-field label {
+    color: #80cbc4;
+  }
+
+
+.input-field [type=text] {
+    color: white;
+}
+
 .save-button {
     margin-top: 1px;
     margin-right: 2px;
     position:absolute;
     top:0;
     right:0;
-    width: 11.75%;
+    width: 10%;
+    
 }
 
 .clear-button {
@@ -17,6 +39,7 @@
     position:absolute;
     top:0;
     right:0;
+    width: 10%;
 }
 
 .index {
