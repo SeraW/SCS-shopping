@@ -82,30 +82,35 @@
 
     
     </div>
-    <div id="box-c">
-        <?php 
-            session_start();
-            $ArtWork = array();
-            if(!isset($_SESSION['counter'])) {
+    <div id="boxes">
+        <div class = "box" id="box-c">
+            <?php 
+                session_start();
                 $ArtWork = array();
-                $_SESSION['counter'] = 0;
-            }
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                
-            if (isset($_POST["clear"])){
-                $_SESSION['counter'] = 0;
-            } else {
-                $ArtWork[$_SESSION['counter']]= array("Genre" => $_POST["genre"], "Type" => $_POST["type"],"Specification" => $_POST["specification"],"Year" => $_POST["year"],"Museum" => $_POST["museum"]);
-                echo "<p><span>Genre:</span> ". $ArtWork[$_SESSION['counter']]["Genre"] ."</p>";
-                echo "<p><span>Type:</span> ". $ArtWork[$_SESSION['counter']]["Type"] ."</p>";
-                echo "<p><span>Specification:</span> ". $ArtWork[$_SESSION['counter']]["Specification"] ."</p>";
-                echo "<p><span>Year:</span> ". $ArtWork[$_SESSION['counter']]["Year"] ."</p>";
-                echo "<p><span>Museum:</span> ". $ArtWork[$_SESSION['counter']]["Museum"] ."</p>";
-                ++$_SESSION['counter'];
-                
-            }
-            }
-        ?>
+                if(!isset($_SESSION['counter'])) {
+                    $ArtWork = array();
+                    $_SESSION['counter'] = 0;
+                }
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    
+                if (isset($_POST["clear"])){
+                    $_SESSION['counter'] = 0;
+                } else {
+                    $ArtWork[$_SESSION['counter']]= array("Genre" => $_POST["genre"], "Type" => $_POST["type"],"Specification" => $_POST["specification"],"Year" => $_POST["year"],"Museum" => $_POST["museum"]);
+                    echo "<p><span>Genre:</span> ". $ArtWork[$_SESSION['counter']]["Genre"] ."</p>";
+                    echo "<p><span>Type:</span> ". $ArtWork[$_SESSION['counter']]["Type"] ."</p>";
+                    echo "<p><span>Specification:</span> ". $ArtWork[$_SESSION['counter']]["Specification"] ."</p>";
+                    echo "<p><span>Year:</span> ". $ArtWork[$_SESSION['counter']]["Year"] ."</p>";
+                    echo "<p><span>Museum:</span> ". $ArtWork[$_SESSION['counter']]["Museum"] ."</p>";
+                    ++$_SESSION['counter'];
+                    
+                }
+                }
+            ?>
+        </div>
+        <div class = "box" id="box-e">
+
+        </div>
     </div>
 </body>
 </html>
