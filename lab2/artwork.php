@@ -82,7 +82,23 @@
 
     
     </div>
+    <div id="box-c">
+        <?php
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            
 
+            if (isset($_POST['clear'])){
+                echo "delete records";
+            } else {
+                echo "<p><span>Genre:</span> ".$_POST['genre']."</p>";
+                echo "<p><span>Type:</span> ".$_POST['type']."</p>";
+                echo "<p><span>Specification:</span> ".$_POST['specification']."</p>";
+                echo "<p><span>year:</span> ".$_POST['year']."</p>";
+                echo "<p><span>museum:</span> ".$_POST['museum']."</p>";
+            }
+            }
+        ?>
+    </div>
 </body>
 </html>
 
@@ -94,14 +110,3 @@
         
 </script>
 
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  
-
-  if (isset($_POST['clear'])){
-      echo "delete records";
-  } else {
-    echo $_POST['year'];
-  }
-}
-?>
