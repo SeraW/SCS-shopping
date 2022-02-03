@@ -1,0 +1,28 @@
+.padding{
+  padding-top:5%  
+}
+
+.save-button {
+    margin-top: 1px;
+    margin-right: 2px;
+    position:absolute;
+    top:0;
+    right:0;
+    width: 11.75%;
+}
+
+.clear-button {
+    margin-top: 40px;
+    margin-right: 2px;
+    position:absolute;
+    top:0;
+    right:0;
+}
+
+.index {
+    margin-top: 100px;
+    margin-right: 2px;
+    position:absolute;
+    top:0;
+    right:0;
+}
