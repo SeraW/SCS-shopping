@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Electronics-Center</title>
+    <title>Art Work Database</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--Import materialize.css-->
@@ -83,18 +83,26 @@
     
     </div>
     <div id="box-c">
-        <?php
+        <?php 
+            session_start();
+            $ArtWork = array();
+            if(!isset($_SESSION['counter'])) {
+                $ArtWork = array();
+                $_SESSION['counter'] = 0;
+            }
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            
-
-            if (isset($_POST['clear'])){
-                echo "delete records";
+                
+            if (isset($_POST["clear"])){
+                $_SESSION['counter'] = 0;
             } else {
-                echo "<p><span>Genre:</span> ".$_POST['genre']."</p>";
-                echo "<p><span>Type:</span> ".$_POST['type']."</p>";
-                echo "<p><span>Specification:</span> ".$_POST['specification']."</p>";
-                echo "<p><span>year:</span> ".$_POST['year']."</p>";
-                echo "<p><span>museum:</span> ".$_POST['museum']."</p>";
+                $ArtWork[$_SESSION['counter']]= array("Genre" => $_POST["genre"], "Type" => $_POST["type"],"Specification" => $_POST["specification"],"Year" => $_POST["year"],"Museum" => $_POST["museum"]);
+                echo "<p><span>Genre:</span> ". $ArtWork[$_SESSION['counter']]["Genre"] ."</p>";
+                echo "<p><span>Type:</span> ". $ArtWork[$_SESSION['counter']]["Type"] ."</p>";
+                echo "<p><span>Specification:</span> ". $ArtWork[$_SESSION['counter']]["Specification"] ."</p>";
+                echo "<p><span>Year:</span> ". $ArtWork[$_SESSION['counter']]["Year"] ."</p>";
+                echo "<p><span>Museum:</span> ". $ArtWork[$_SESSION['counter']]["Museum"] ."</p>";
+                ++$_SESSION['counter'];
+                
             }
             }
         ?>
