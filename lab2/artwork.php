@@ -113,8 +113,9 @@
         </div>
     </div>
     <form action="" method="POST" id="index-form">
-        <label for="index" class="active">Index</label>
-        <select name="index">
+        <div class="input-field">
+            <label for="index" class="active">Index</label>
+            <select name="index"></div>
             <?php
                 if ($_SERVER["REQUEST_METHOD"] == "POST"){
                         echoDropdown();  
