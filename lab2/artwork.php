@@ -72,49 +72,83 @@
             <!--Clear button--> 
             <button class="btn waves-effect waves-light clear-button" type="submit" name="clear">Clear Record
                 <i class="material-icons right">clear</i>
-            </button>
-             <!--Get index? -->
-             <div class="input-field index">
-                <input type="text" id="index" name="index">
-                <label for="index">Index</label>
-            </div>      
+            </button>   
         </form>
 
     
     </div>
     <div id="boxes">
         <div class = "box" id="box-c">
+            <h2>Submitted Record </h2>
             <?php 
                 session_start();
-                $ArtWork = array();
                 if(!isset($_SESSION['counter'])) {
-                    $ArtWork = array();
                     $_SESSION['counter'] = 0;
+                    $_SESSION['Artwork'] = array();
                 }
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     
                 if (isset($_POST["clear"])){
+                    $_SESSION['Artwork'] = array();
                     $_SESSION['counter'] = 0;
-                } else {
-                    $ArtWork[$_SESSION['counter']]= array("Genre" => $_POST["genre"], "Type" => $_POST["type"],"Specification" => $_POST["specification"],"Year" => $_POST["year"],"Museum" => $_POST["museum"]);
-                    echo "<p><span>Genre:</span> ". $ArtWork[$_SESSION['counter']]["Genre"] ."</p>";
-                    echo "<p><span>Type:</span> ". $ArtWork[$_SESSION['counter']]["Type"] ."</p>";
-                    echo "<p><span>Specification:</span> ". $ArtWork[$_SESSION['counter']]["Specification"] ."</p>";
-                    echo "<p><span>Year:</span> ". $ArtWork[$_SESSION['counter']]["Year"] ."</p>";
-                    echo "<p><span>Museum:</span> ". $ArtWork[$_SESSION['counter']]["Museum"] ."</p>";
-                    ++$_SESSION['counter'];
+                } elseif (isset($_POST["save"])){
+                    $_SESSION['Artwork'][$_SESSION['counter']]= array("Genre" => $_POST["genre"], "Type" => $_POST["type"],"Specification" => $_POST["specification"],"Year" => $_POST["year"],"Museum" => $_POST["museum"]);
+                    echoSubmission();
+                    
+                } elseif($_SESSION['counter'] > 0){
+                    --$_SESSION['counter'];
+                    echoSubmission();
                     
                 }
-                }
+                
             ?>
         </div>
         <div class = "box" id="box-e">
-
+            <h2>Index representation </h2>
+            <?php
+                if (isset($_POST['find'])){
+                    echoFind();
+                    
+                }
+            ?>
         </div>
     </div>
+    <form action="" method="POST" id="index-form">
+        <label for="index" class="active">Index</label>
+        <select name="index">
+            <?php
+                if ($_SERVER["REQUEST_METHOD"] == "POST"){
+                        echoDropdown();  
+                }
+            ?>
+        </select>
+        <button class="btn waves-effect waves-light " type="submit" name="find">find index
+            <i class="material-icons right">send</i>
+        </button>
+    </form>
 </body>
 </html>
-
+<?php 
+    function echoSubmission(){
+        echo "<p><span>Genre:</span> ". $_SESSION['Artwork'][$_SESSION['counter']]["Genre"] ."</p>";
+        echo "<p><span>Type:</span> ". $_SESSION['Artwork'][$_SESSION['counter']]["Type"] ."</p>";
+        echo "<p><span>Specification:</span> ". $_SESSION['Artwork'][$_SESSION['counter']]["Specification"] ."</p>";
+        echo "<p><span>Year:</span> ". $_SESSION['Artwork'][$_SESSION['counter']]["Year"] ."</p>";
+        echo "<p><span>Museum:</span> ". $_SESSION['Artwork'][$_SESSION['counter']]["Museum"] ."</p>";
+        ++$_SESSION['counter'];
+    }
+    function echoDropdown(){
+        for ($i = 0; $i < $_SESSION['counter']; $i++){
+            echo "<option value='".$i."'>".$i."</option>";
+        }
+    }
+    function echoFind(){
+        echo "<p><span>Genre:</span> ". $_SESSION['Artwork'][$_POST["index"]]["Genre"] ."</p>";
+        echo "<p><span>Type:</span> ". $_SESSION['Artwork'][$_POST["index"]]["Type"] ."</p>";
+        echo "<p><span>Specification:</span> ". $_SESSION['Artwork'][$_POST["index"]]["Specification"] ."</p>";
+        echo "<p><span>Year:</span> ". $_SESSION['Artwork'][$_POST["index"]]["Year"] ."</p>";
+        echo "<p><span>Museum:</span> ". $_SESSION['Artwork'][$_POST["index"]]["Museum"] ."</p>";
+    }
+?>
 <script>
      $(document).ready(function(){
         $('select').formSelect();
