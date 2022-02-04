@@ -87,18 +87,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	}
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	if (isset($_POST['insert'])){
-		try {
+try {
+	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+		if (isset($_POST['insert'])){
 			$sql = "INSERT INTO StRec (firstname, middlename, lastname, email, program)
 			VALUES 
 			('Thomas', 'Ganyu', 'Train', 'thomas@example.com', 'Computer Science'),
 			('John', 'Reynold', 'Smith', 'john@example.com', 'Business'),
 			('Adam', 'Bjergsen', 'Jensen', 'deus@example.com', 'Underwater Basket Weaving'),
-			('Deku', 'Faker', 'Todoroki', 'yaoi@example.com', 'Fashion'),
+			('Ken', 'Faker', 'Lu', 'yaoi@example.com', 'Fashion'),
 			('Bob', 'Hu', 'Builder', 'bobbuilder@example.com', 'Computer Science'),
-			('Mario', 'Gura', 'Bro', 'mario@example.com', 'Fast Food'),
-			('Lugionald', 'Gawr', 'Brotherino', 'luigi@example.com', 'History')
+			('Mario', 'Poh', 'Bro', 'mario@example.com', 'Fast Food'),
+			('Lugionald', 'Yoh', 'Mo', 'luigi@example.com', 'History')
 			";
 
 			if ($conn->query($sql) === TRUE) {
@@ -107,14 +107,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				echo "Error: " . $sql . "<br>" . $conn->error;
 			}
 		}
-		catch(Throwable $e)
-		{
-			echo  "Table does not exist";
-		}
 	}
-}
 
-try {
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		if (isset($_POST['delete'])){
 			// sql to delete a record
