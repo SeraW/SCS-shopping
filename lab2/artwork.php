@@ -27,7 +27,7 @@
             <div class="row padding">
                 <div class="input-field col s4">
                     <label for="genre" class="active">Genre</label>
-                    <select name="genre">
+                    <select name="genre" id ="genre" onChange="formChanged('genre')">
                         <option value="Abstract">Abstract</option>
                         <option value="Baroque">Baroque</option>
                         <option value="Gothic">Gothic</option>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="input-field col s4">
                     <label for="type" class="active">Type</label>
-                    <select name="type">
+                    <select name="type" id="type" onChange="formChanged('type')">
                         <option value="Sculpture">Sculpture</option>
                         <optgroup label="Painting">
                             <option value="Landscape">Landscape</option>
@@ -45,7 +45,7 @@
                 </div>
                 <div class="input-field col s4">
                     <label for="specification" class="active">Specification</label>
-                    <select name="specification">
+                    <select name="specification" id="specification" onChange="formChanged('specification')">
                         <option value="Commercial">Commercial</option>
                         <option value="Non-commercial">Non-commercial</option>
                         <option value="Derivative Work">Derivative Work</option>
@@ -56,11 +56,11 @@
             
             <div class="row">
                 <div class="input-field col s6">
-                    <input type="text" id="year" name="year" class="validate">
+                    <input type="text" id="year" name="year" onkeypress="formChanged('year')" onkeyup="formChanged('year')" class="validate">
                     <label for="year">Year</label>
                 </div>
                 <div class="input-field col s6">
-                    <input type="text" id="museum" name="museum" class="validate">
+                    <input type="text" id="museum" name="museum" onkeypress="formChanged('museum')" onkeyup="formChanged('museum')" class="validate">
                     <label for="museum">Museum</label>
                 </div>
             </div>
@@ -79,7 +79,7 @@
     </div>
     <div id="boxes">
         <div class = "box" id="box-c">
-            <h2>Submitted Record </h2>
+            <h2>Creating Record... </h2>
             <?php 
                 session_start();
                 if(!isset($_SESSION['counter'])) {
@@ -92,18 +92,19 @@
                     $_SESSION['counter'] = 0;
                 } elseif (isset($_POST["save"])){
                     $_SESSION['Artwork'][$_SESSION['counter']]= array("Genre" => $_POST["genre"], "Type" => $_POST["type"],"Specification" => $_POST["specification"],"Year" => $_POST["year"],"Museum" => $_POST["museum"]);
-                    echoSubmission();
+                    ++$_SESSION['counter'];
                     
-                } elseif($_SESSION['counter'] > 0){
-                    --$_SESSION['counter'];
-                    echoSubmission();
-                    
-                }
+                } 
                 
             ?>
+            <p id="Genre"><span>Genre:</span></p>
+            <p id="Type"><span>Type:</span></p>
+            <p id="Specification"><span>Specification:</span></p>
+            <p id="Year"><span>Year:</span></p>
+            <p id="Museum"><span>Museum:</span></p>
         </div>
         <div class = "box" id="box-e">
-            <h2>Index representation </h2>
+            <h2>Index representation: </h2>
             <?php
                 if (isset($_POST['find'])){
                     echoFind();
@@ -129,14 +130,6 @@
 </body>
 </html>
 <?php 
-    function echoSubmission(){
-        echo "<p><span>Genre:</span> ". $_SESSION['Artwork'][$_SESSION['counter']]["Genre"] ."</p>";
-        echo "<p><span>Type:</span> ". $_SESSION['Artwork'][$_SESSION['counter']]["Type"] ."</p>";
-        echo "<p><span>Specification:</span> ". $_SESSION['Artwork'][$_SESSION['counter']]["Specification"] ."</p>";
-        echo "<p><span>Year:</span> ". $_SESSION['Artwork'][$_SESSION['counter']]["Year"] ."</p>";
-        echo "<p><span>Museum:</span> ". $_SESSION['Artwork'][$_SESSION['counter']]["Museum"] ."</p>";
-        ++$_SESSION['counter'];
-    }
     function echoDropdown(){
         for ($i = 0; $i < $_SESSION['counter']; $i++){
             echo "<option value='".$i."'>".$i."</option>";
@@ -155,6 +148,40 @@
         $('select').formSelect();
        
   });
-        
+
+
+  
+  const formChanged = (form) =>{
+    let v = document.getElementById("genre").value;
+    document.getElementById("Genre").innerHTML = "<p id='Genre'><span>Genre:</span> " + v + "</p>";
+    let v1 = document.getElementById("type").value;
+    document.getElementById("Type").innerHTML = "<p id='Type'><span>Type:</span> " + v1 + "</p>";
+    let v2 = document.getElementById("specification").value;
+    document.getElementById("Specification").innerHTML = "<p id='Specification'><span>Specification:</span> " + v2 + "</p>";
+      switch (form){
+          case "genre":
+                v = document.getElementById("genre").value;
+                document.getElementById("Genre").innerHTML = "<p id='Genre'><span>Genre:</span> " + v + "</p>";
+                break;
+          case "type":
+                v1 = document.getElementById("type").value;
+                document.getElementById("Type").innerHTML = "<p id='Type'><span>Type:</span> " + v1 + "</p>";
+                break;
+          case "specification":
+                v2 = document.getElementById("specification").value;
+                document.getElementById("Specification").innerHTML = "<p id='Specification'><span>Specification:</span> " + v2 + "</p>";
+                break;
+          case "year":
+                let v3 = document.getElementById("year").value;
+                document.getElementById("Year").innerHTML = "<p id='Year'><span>Year:</span> " + v3 + "</p>";
+                break;
+          case "museum":
+                let v4 = document.getElementById("museum").value;
+                document.getElementById("Museum").innerHTML = "<p id='Museum'><span>Museum:</span> " + v4 + "</p>";
+                break;
+          default:
+                break;
+      }
+  }
 </script>
 
