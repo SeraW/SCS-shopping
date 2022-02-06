@@ -75,9 +75,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				)";
 
 				if ($conn->query($sql) === TRUE) {
-					echo "Table Student Records created successfully";
+					echo "<p>Table Student Records created successfully</p>";
 				} else {
-					echo "Error creating table: " . $conn->error;
+					echo "<p>Error creating table: " . $conn->error ."</p>";
 				}
 		}
 		catch(Throwable $e)
@@ -87,37 +87,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	}
 }
 
-try {
-	if ($_SERVER["REQUEST_METHOD"] == "POST") {
-		if (isset($_POST['insert'])){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	if (isset($_POST['insert'])){
+		try {
 			$sql = "INSERT INTO StRec (firstname, middlename, lastname, email, program)
 			VALUES 
 			('Thomas', 'Ganyu', 'Train', 'thomas@example.com', 'Computer Science'),
 			('John', 'Reynold', 'Smith', 'john@example.com', 'Business'),
 			('Adam', 'Bjergsen', 'Jensen', 'deus@example.com', 'Underwater Basket Weaving'),
-			('Ken', 'Faker', 'Lu', 'yaoi@example.com', 'Fashion'),
+			('Deku', 'Faker', 'Todoroki', 'yaoi@example.com', 'Fashion'),
 			('Bob', 'Hu', 'Builder', 'bobbuilder@example.com', 'Computer Science'),
-			('Mario', 'Poh', 'Bro', 'mario@example.com', 'Fast Food'),
-			('Lugionald', 'Yoh', 'Mo', 'luigi@example.com', 'History')
+			('Mario', 'Gura', 'Bro', 'mario@example.com', 'Fast Food'),
+			('Lugionald', 'Gawr', 'Brotherino', 'luigi@example.com', 'History')
 			";
 
 			if ($conn->query($sql) === TRUE) {
-				echo "New record created successfully";
+				echo "<p>New record created successfully</p>";
 			} else {
-				echo "Error: " . $sql . "<br>" . $conn->error;
+				echo "<p>Error: " . $sql . "<br>" . $conn->error ."</p>";
 			}
 		}
+		catch(Throwable $e)
+		{
+			echo  "<p>Table does not exist</p>";
+		}
 	}
+}
 
+try {
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		if (isset($_POST['delete'])){
 			// sql to delete a record
 			$sql = "DELETE FROM StRec WHERE id=1";
 
 			if ($conn->query($sql) === TRUE) {
-				echo "Record deleted successfully";
+				echo "<p>Record deleted successfully</p>";
 			} else {
-				echo "Error deleting record: " . $conn->error;
+				echo "<p>Error deleting record: " . $conn->error ."</p>";
 			}
 		}
 	}
@@ -129,14 +135,14 @@ try {
 				// sql to delete all record
 				$sql = "DROP TABLE StRec";
 				if ($conn->query($sql) === TRUE) {
-					echo "Record deleted successfully";
+					echo "<p>Record deleted successfully</p>";
 				} else {
-					echo "Error deleting record: " . $conn->error;
+					echo "<p>Error deleting record: " . $conn->error . "</p>";
 				}
 			}
 			catch(Throwable $e)
 			{
-				echo  "Table does not exist";
+				echo  "<p>Table does not exist</p>";
 			}
 		}
 	}
@@ -154,7 +160,7 @@ try {
 				}
 				echo "</table><br>";
 			} else {
-				echo "0 results<br>";
+				echo "<p>0 results<br></p>";
 			}
 
 			$sql2 = "SELECT id, email, program FROM StRec";
@@ -187,7 +193,7 @@ try {
 }
 catch(Throwable $e)
 {
-	echo  "Table does not exist";
+	echo  "<p>Table does not exist</p>";
 }
 
 $conn->close();
