@@ -13,6 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!--Import materialize.js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
 </head>
 
 <body>
@@ -183,5 +184,20 @@
                 break;
       }
   }
-</script>
 
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, {});
+    changeColor();
+});
+
+function changeColor(){
+  var options_elem = document.querySelectorAll(".dropdown-content li>a, .dropdown-content li>span");
+  
+  //index==0 is the disabled option element
+  options_elem.forEach(function(element, index){
+    if(index == "2") element.classList.add("materialize-red-text"); //or you could use class "redtext"
+  });
+
+}
+</script>

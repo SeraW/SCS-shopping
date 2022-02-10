@@ -14,6 +14,10 @@
       color: #e0e0e0
   }
   
+  ul.dropdown-content.select-dropdown li span {
+    color: #00bcd4; 
+}
+
   .input-field label {
       color: #80cbc4;
     }
