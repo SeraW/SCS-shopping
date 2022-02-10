@@ -185,19 +185,6 @@
       }
   }
 
-  document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(elems, {});
-    changeColor();
-});
 
-function changeColor(){
-  var options_elem = document.querySelectorAll(".dropdown-content li>a, .dropdown-content li>span");
-  
-  //index==0 is the disabled option element
-  options_elem.forEach(function(element, index){
-    if(index == "2") element.classList.add("materialize-red-text"); //or you could use class "redtext"
-  });
 
-}
 </script>
