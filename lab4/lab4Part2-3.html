@@ -1,5 +1,6 @@
  
 <!DOCTYPE html>
+<link rel="stylesheet" href="lab4Part2-2.css">
 <html>
 <head>
 	<titile></title>
@@ -31,7 +32,7 @@
                        var marker = new google.maps.Marker(
                               {position: location, map: map});    
 	     var infoWindow = new google.maps.InfoWindow(
-                              { content: "<h5> source </h5>"});
+                              { content: "<h5><u>Cranbrooke Avenue</u></h5><br><h5> Latitude:"+location.lat+" </h5><br><h5> Longtitude:"+location.lng+" </h5>"});
                         marker.addListener("click", function()
                               { infoWindow.open(map, marker); });
 		
@@ -39,7 +40,7 @@
                         var marker2 = new google.maps.Marker(
                               {position: location2, map: map});    
 	     var infoWindow2 = new google.maps.InfoWindow(
-                              { content: "<h5> dest </h5>"});
+                              { content: "<h5><u>Toba Drive</u></h5><br><h5> Latitude:"+location.lat+" </h5><br><h5> Longtitude:"+location.lng+" </h5>"});
                         marker2.addListener("click", function()
                               { infoWindow2.open(map, marker2); });
 
@@ -47,8 +48,13 @@
 	 
 	
 </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AAIzaSyCNeLArhbsHVBkf228uluGgd9QIEFPeNfs&callback=initMap">
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNeLArhbsHVBkf228uluGgd9QIEFPeNfs&callback=initMap">
 </script>
-	<h2> TEST </h2>
- </body>
+<p><u>Cranbrooke Avenue</u></p>
+<p><u>Latitude:</u> 43.7272</p>
+<p><u>Longtitude:</u> -79.4121</p> </body>
+<br>
+<p><u>Toba Drive</u></p>
+<p><u>Latitude:</u> 43.7575</p>
+<p><u>Longtitude:</u> -79.3910</p>
 </html>
