@@ -1,5 +1,6 @@
  
 <!DOCTYPE html>
+<link rel="stylesheet" href="lab4Part2-2.css">
 <html>
 <head>
 	<titile></title>
@@ -25,8 +26,13 @@
 	     var location = {lat: 43.7272, lng: -79.4121};
           	     var map = new google.maps.Map(document.getElementById("map"),
                               { zoom: 14, center: location});
-                        var marker = new google.maps.Marker(
-                              {position: location, map: map});
+				var marker = new google.maps.Marker(
+						{position: location, map: map});
+
+				var infoWindow = new google.maps.InfoWindow(
+						{ content: "<h5><u>Cranbrooke Avenue</u></h5><br><h5> Latitude:"+location.lat+" </h5><br><h5> Longtitude:"+location.lng+" </h5>"});
+				marker.addListener("click", function()
+						{ infoWindow.open(map, marker); });
                    }
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNeLArhbsHVBkf228uluGgd9QIEFPeNfs&callback=initMap">
