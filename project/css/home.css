@@ -42,3 +42,59 @@ body{
     margin-right:60px;
     border-radius: 5px;
 }
+
+#about-sec{
+    width: 100%;
+    height:40vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#about-sec #about-area{
+    background:#393D3F;
+    width:80%;
+    height: 50%;
+    color:#FDFDFF;
+    -webkit-box-shadow: 1px 1px 15px 0px rgba(0,0,0,0.4); 
+    box-shadow: 1px 1px 15px 0px rgba(0,0,0,0.4);
+    border-radius: 5px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#about-sec #about-area h2{
+    font-size: 2.5rem;
+    font-weight:600;
+}
+
+#contact-sec{
+    width: 100%;
+    height:70vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#contact-sec #contact-area{
+    width: 50%;
+}
+
+#contact-sec #contact-area h1{
+    width:95%;
+    font-size: 3rem;
+    font-weight:800;
+}
+
+#contact-sec #contact-area h2{
+    width:95%;
+    font-size: 1.5rem;
+}
+
+#contact-sec #contact-area img{
+    margin-right:60px;
+    border-radius: 5px;
+}

@@ -19,10 +19,24 @@
     <div id="home">
         <div id ="home-info">
             <h1>Welcome to Smart Customer Services.</h1>
-            <h2>Learn more about our products and Services.</h2>
+            <h2>Learn more about our Products and Services.</h2>
             <a class="waves-effect waves-light btn" style="background: #149BBB"><i class="material-icons left">shopping_basket</i>Services</a>
         </div>
         <img src="./img/homeimg.svg" alt="Ecommerce" width="400" height="400">
+    </div>
+    <div id = "about-sec">
+        <div id = "about-area">
+            <h2>Want to learn more about us?</h2>
+            <a class="waves-effect waves-light btn" style="background: #149BBB"><i class="material-icons left">assignment</i>About Us</a>
+        </div>  
+    </div>
+    <div id="contact-sec">
+        <div id= "contact-area">
+            <h1>Got any questions?</h1>
+            <h2>Find our contact information here.</h2>
+            <a class="waves-effect waves-light btn" style="background: #149BBB"><i class="material-icons left">question_answer</i>Contact Us</a>
+        </div>
+        <img src="./img/question.svg" alt="Contact-Us" width="400" height="400">
     </div>
 </body>
 </html>
