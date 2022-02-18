@@ -40,6 +40,7 @@ span{
     width:90%;
     font-size: 1.5rem;
     font-weight: 500;
+    margin-bottom: 25px;
 }
 
 #about-team{
@@ -65,19 +66,21 @@ span{
     width: 95%;
     min-height: 75%;
     display:flex;
-    justify-content: space-evenly;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
     margin:auto;
 }
 
 #about-team #team .members{
+    margin: 0 30px;
     text-align: center;
     background:#FDFDFF;
     color:#393D3F;
-    min-height: 300px;
+    min-height: 350px;
     width:300px;
     border-radius: 10px;
-    margin: 0 25px;
+    margin: 25px;
 }
 
 #about-team #team .members h3{
@@ -87,4 +90,23 @@ span{
 
 #about-team #team .members img{
     border-radius: 10px;
+}
+
+@media only screen and (max-width:335px){
+    #about-desc h1{
+        font-size:2.5rem;
+
+    }
+    
+    #about-desc p{
+        font-size: 1rem;
+    }
+
+    #about-team h1{
+        font-size: 2,5rem;
+    }
+
+    #about-team #team .members h3{
+        font-size:2rem;
+    }
 }
