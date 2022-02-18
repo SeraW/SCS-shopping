@@ -1,0 +1,44 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body{
+    overflow-x: hidden;
+    background:#FDFDFF;
+    color:#393D3F;
+}
+
+#home{
+    width: 100%;
+    height:100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#home #home-info{
+    width: 50%;
+}
+
+#home #home-info h1{
+    width:95%;
+    font-size: 3rem;
+    font-weight:800;
+}
+
+#home #home-info h2{
+    width:95%;
+    font-size: 1.5rem;
+}
+
+#home img{
+    margin-right:60px;
+    border-radius: 5px;
+}
