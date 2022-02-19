@@ -16,6 +16,18 @@
 </head>
 
 <body>
-    
+    <div id="types">
+        <h1>Choose a <span>Service</span></h1>
+        <div id="type-btns">
+            <a href="#" id="tbtn">
+                <i class="material-icons" style="font-size: 60px">shop</i>
+                <h2>Products</h2>
+            </a>
+            <a href="#" id="tbtn">
+                <i class="material-icons" style="font-size: 60px">directions_car</i>
+                <h2>Cars</h2>
+            </a>
+        </div>
+    </div>
 </body>
 </html>
