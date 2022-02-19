@@ -13,26 +13,27 @@ CREATE TABLE IF NOT EXISTS Users (
 );
 
 CREATE TABLE IF NOT EXISTS Review (
-    review_id INT PRIMARY KEY,
+    review_id INT PRIMARY KEY AUTO_INCREMENT,
     review_text VARCHAR(500),
     user_id INT REFERENCES Users(user_id) ON DELETE CASCADE
 );
 
 
 CREATE TABLE IF NOT EXISTS Branch (
-    branch_id INT PRIMARY KEY,
+    branch_id INT PRIMARY KEY AUTO_INCREMENT,
+    branch_name VARCHAR(25),
     lat FLOAT,
     lon FLOAT
 );
 
 CREATE TABLE IF NOT EXISTS Car (
-    car_id INT PRIMARY KEY,
+    car_id INT PRIMARY KEY AUTO_INCREMENT,
     model VARCHAR(25) NOT NULL,
     availibility VARCHAR(25) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Trip (
-    trip_id INT PRIMARY KEY,
+    trip_id INT PRIMARY KEY AUTO_INCREMENT,
     destination_code INT,
     trip_price FLOAT,
     distance FLOAT,
@@ -41,20 +42,20 @@ CREATE TABLE IF NOT EXISTS Trip (
 );
 
 CREATE TABLE IF NOT EXISTS Product (
-    prod_id INT PRIMARY KEY,
+    prod_id INT PRIMARY KEY AUTO_INCREMENT,
     prod_name VARCHAR(50) NOT NULL,
     prod_price FLOAT NOT NULL,
     img_url VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Shopping (
-    receipt_id INT PRIMARY KEY,
+    receipt_id INT PRIMARY KEY AUTO_INCREMENT,
     shopping_price FLOAT NOT NULL,
     branch_id INT REFERENCES Branch(branch_id)
 );
 
 CREATE TABLE IF NOT EXISTS Orders (
-    order_id INT PRIMARY KEY,
+    order_id INT PRIMARY KEY AUTO_INCREMENT,
     date_issued DATE,
     date_completed DATE,
     order_price FLOAT NOT NULL,
