@@ -15,6 +15,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 
+<?php include 'navbar.php'?>
+
 <body>
     <div id="about-desc">
         <h1>Our <span>Goal</span></h1>

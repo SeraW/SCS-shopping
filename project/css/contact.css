@@ -13,7 +13,6 @@ body{
     overflow-x: hidden;
     background:#FDFDFF;
     color:#393D3F;
-    text-align: center;
 }
 
 span{
@@ -27,6 +26,7 @@ span{
     display:flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 #contact-container #contact{

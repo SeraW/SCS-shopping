@@ -13,7 +13,6 @@ body{
     overflow-x: hidden;
     background:#FDFDFF;
     color:#393D3F;
-    text-align: center;
 }
 
 span{
@@ -28,6 +27,7 @@ span{
     justify-content: center;
     align-items: center;
     background: url(../img/login.png) no-repeat center center/cover;
+    text-align: center;
 }
 
 #register #regarea{
