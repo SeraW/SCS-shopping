@@ -19,7 +19,7 @@
     <div id="login">
         <div id="loginarea">
             <h1>Sign <span>In</span></h1>
-            <form action="" method="POST">
+            <form action="./validation/loginval.php" method="POST">
                 <label for="username" style="width:90%">Username</label>
                 <input id="username bar" type="text" name = "username" style="width:90%"  required><br>
                 <label for="password" style="width:90%">Password</label>
