@@ -28,7 +28,7 @@
         <li><a href="contact.php">Contact Us</a></li>
         <li><a href="admin.php">Admin</a></li>
         <li><a href="login.php">Sign In</a></li>
-        <li><a href="login.php">Sign Up</a></li>
+        <li><a href="register.php">Sign Up</a></li>
       </ul>
     </div>
   </nav>
