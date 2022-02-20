@@ -18,8 +18,10 @@ $num = mysqli_num_rows($result);
 
 if ($num == 0){
     header("Location: ../login.php");
+    $error = "Invalid Username or Password.";
+    $s = "INSERT into error(error_text) values ('$error')";
+    mysqli_query($db,$s);
     mysqli_close($db);
-    $_SESSION['error'] = "Incorrect Username or Password.";
 }else{
     $_SESSION['username'] = $_POST['username'];
     header("Location: ../home.php");

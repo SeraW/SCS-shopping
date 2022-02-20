@@ -22,8 +22,10 @@ $num = mysqli_num_rows($result);
 
 if ($num == 1){
     header("Location: ../register.php");
+    $error = "Username Already Taken.";
+    $s = "INSERT into error(error_text) values ('$error')";
+    mysqli_query($db,$s);
     mysqli_close($db);
-    $_SESSION['error'] = "Username is already taken.";
 }else{
     $_SESSION['username'] = $_POST['username'];
     $reg = "INSERT into users(first_name, last_name, phone, email, addy, postal, login_id, login_password, balance, admin_val) values ('$fname','$lname','$phone','$email','$addr','$postal','$username','$password', 0, false)";
