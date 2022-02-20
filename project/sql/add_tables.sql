@@ -66,6 +66,10 @@ CREATE TABLE IF NOT EXISTS Orders (
     branch_id FLOAT REFERENCES Branch(branch_id) ON DELETE CASCADE
 );
 
+CREATE TABLE IF NOT EXISTS Error (
+    error_text VARCHAR(50) PRIMARY KEY
+);
+
 INSERT INTO Users (user_id, first_name, last_name, phone, email, addy, postal, login_id, login_password, balance, admin_val)
 VALUES (0000, 'Dave', 'Tran', '000-000-0000', 'dave.tran@gmail.com', '22 road town', 'L04H7S', 'davetran', 'coolguy', 500.00, true),
         (0001, 'Anthony', 'Tran', '000-000-0001', 'atran@gmail.com', '521 avenue road', 'L2H83T', 'atran', 'iplaygenshin', 500.00, true),
@@ -117,5 +121,4 @@ INSERT INTO Orders (order_id, date_issued, date_completed, order_price, payment_
 VALUES (0000, '2022-01-20', '2022-01-25', 81.48, 0000, 0003, 0000, 0000, 0000),
         (0001, '2022-01-26', '2022-02-01', 107.03, 0001, 0004,0001, 0001, 0001),
         (0002, '2022-02-10', '2022-02-13', 45.49, 0002, 0005, 0002, 0002, 0002);
-
 
