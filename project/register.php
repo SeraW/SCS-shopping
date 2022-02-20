@@ -19,7 +19,7 @@
     <div id="register">
         <div id="regarea">
             <h1>Create an <span>Account</span></h1>
-            <form action="" method="POST">
+            <form action="./validation/signup.php" method="POST">
                 <label for="fname" style="width:90%">First Name</label><br>
                 <input id="fname bar" type="text" name = "fname" style="width:90%"  required><br>
                 <label for="lname" style="width:90%">Last Name</label><br>
@@ -27,7 +27,7 @@
                 <label for="email" style="width:90%">Email</label><br>
                 <input id="email bar" type="email" name = "email" style="width:90%" required><br>
                 <label for="phone" style="width:90%">Phone Number</label><br>
-                <input id="phone bar" type="tel" name = "phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" style="width:90%" required><br>
+                <input id="phone bar" type="tel" name = "phone" style="width:90%" required><br>
                 <label for="address" style="width:90%">Address</label><br>
                 <input id="address bar" type="text" name = "address" style="width:90%"  required><br>
                 <label for="postal" style="width:90%">Postal Code</label><br>
@@ -43,5 +43,11 @@
             </form>
         </div>
     </div>
+    <?php
+        if (isset($_SESSION["error"])){
+            echo '<script>alert('.$_SESSION["error"].')</script>';
+            unset($_SESSION["error"]);
+        }
+    ?>
 </body>
 </html>
