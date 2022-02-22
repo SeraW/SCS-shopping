@@ -70,6 +70,10 @@ CREATE TABLE IF NOT EXISTS Error (
     error_text VARCHAR(50) PRIMARY KEY
 );
 
+CREATE TABLE IF NOT EXISTS Messages (
+    message_text VARCHAR(100) PRIMARY KEY
+);
+
 INSERT INTO Users (first_name, last_name, phone, email, addy, postal, login_id, login_password, balance, admin_val)
 VALUES ('Dave', 'Tran', '000-000-0000', 'dave.tran@gmail.com', '22 road town', 'L04H7S', 'davetran', 'coolguy', 500.00, true),
         ('Anthony', 'Tran', '000-000-0001', 'atran@gmail.com', '521 avenue road', 'L2H83T', 'atran', 'iplaygenshin', 500.00, true),
