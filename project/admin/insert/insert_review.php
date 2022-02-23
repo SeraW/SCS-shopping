@@ -4,21 +4,20 @@ if ($db->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$branch_addy = $_POST["branch_addy"];
-$lat = $_POST["lat"];
-$lon = $_POST["lon"];
+$review_text = $_POST["review_text"];
+$user_id = $_POST["review_user_id"];
 
 try {
-    $check = $db->query("SELECT * FROM branch WHERE branch_addy = '$branch_addy'");
-    $num = mysqli_num_rows($check);
+    $user_check = $db->query("SELECT * FROM Users WHERE user_id = '$user_id'");
+    $user_num = mysqli_num_rows($user_check);
 
-    if ($num == 1){
-        $error = "Address already exists";
+    if ($user_num ==0){
+        $error = "User ID does not exist";
         $s = "INSERT into error(error_text) values ('$error')";
         mysqli_query($db,$s);
         header("Location: ../insert.php");
     } else {
-        $insert = "INSERT into branch(branch_addy, lat, lon) values ('$branch_addy', $lat, $lon)";
+        $insert = "INSERT into review(review_text, user_id) values ('$review_text', $user_id)";
         mysqli_query($db, $insert);
         $message = "Data inserted successfully";
         $s = "INSERT into messages(message_text) values ('$message')";
@@ -26,7 +25,7 @@ try {
         header("Location: ../insert.php");
     }
 
-} catch(Throwable $e){
+} catch(throwable $e){
     $error = "Insert failed";
     $s = "INSERT into error(error_text) values ('$error')";
     mysqli_query($db,$s);

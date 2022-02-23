@@ -4,33 +4,37 @@ if ($db->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$branch_addy = $_POST["branch_addy"];
-$lat = $_POST["lat"];
-$lon = $_POST["lon"];
+$shopping_price = $_POST["shopping_price"];
+$branch_id = $_POST["shopping_branch_id"];
 
-try {
-    $check = $db->query("SELECT * FROM branch WHERE branch_addy = '$branch_addy'");
-    $num = mysqli_num_rows($check);
+try{
+    $branch_check = $db->query("SELECT * FROM Branch WHERE branch_id = '$branch_id'");
+    $branch_num = mysqli_num_rows($branch_check);
 
-    if ($num == 1){
-        $error = "Address already exists";
+    if ($branch_num ==0){
+        $error = "Branch ID does not exist";
+        $s = "INSERT into error(error_text) values ('$error')";
+        mysqli_query($db,$s);
+        header("Location: ../insert.php");
+    } else if (!is_numeric($shopping_price)){
+        $error = "Please enter numbers for total";
         $s = "INSERT into error(error_text) values ('$error')";
         mysqli_query($db,$s);
         header("Location: ../insert.php");
     } else {
-        $insert = "INSERT into branch(branch_addy, lat, lon) values ('$branch_addy', $lat, $lon)";
+        $insert = "INSERT into shopping(shopping_price, branch_id) values ($shopping_price, $branch_id)";
         mysqli_query($db, $insert);
         $message = "Data inserted successfully";
         $s = "INSERT into messages(message_text) values ('$message')";
         mysqli_query($db,$s);
         header("Location: ../insert.php");
     }
-
-} catch(Throwable $e){
+} catch(throwable $e){
     $error = "Insert failed";
     $s = "INSERT into error(error_text) values ('$error')";
     mysqli_query($db,$s);
     header("Location: ../insert.php");
 }
+
 mysqli_close($db);
 ?>

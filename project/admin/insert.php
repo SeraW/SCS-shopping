@@ -165,16 +165,16 @@ session_start();
 <!--Car Form-->
 
 <div class="container" id="car_form">
-    <form name="car" id="car">
+    <form name="car" id="car" action="./insert/insert_car.php" method="POST">
       <div class="row">
         <div class="input-field col s12 m10 offset-m1">
-          <input id="car_model" type="text" class="validate" required>
+          <input id="car_model" name="car_model" type="text" class="validate" required>
           <label for="car_model">Car Model</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12 m10 offset-m1">
-          <input id="car_aval" type="text" class="validate" required>
+          <input id="car_aval" name="car_aval" type="text" class="validate" required>
           <label for="car_aval">Car availibility</label>
         </div>
       </div>
@@ -190,46 +190,46 @@ session_start();
 <!--Order Form-->
 
 <div class="container" id="orders_form">
-    <form name="orders" id="orders">
+    <form name="orders" id="orders" action="./insert/insert_order.php" method="POST">
       <div class="row">
         <div class="input-field col s12 m10 offset-m1">
-          <input id="date_issued" type="text" class="validate" required>
+          <input id="date_issued" name="date_issued" type="text" class="validate" required>
           <label for="date_issued">Date issued YYYY-MM-DD</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12 m10 offset-m1">
-          <input id="date_completed" type="text" class="validate" required>
+          <input id="date_completed" name="date_completed" type="text" class="validate" required>
           <label for="date_completed">Date completed YYY-MM-DD</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12 m5 offset-m1">
-          <input id="order_price" type="text" class="validate" required>
+          <input id="order_price" name="order_price" type="text" class="validate" required>
           <label for="order_price">Total</label>
         </div>
         <div class="input-field col s12 m5">
-          <input id="payment_code" type="text" class="validate" required>
+          <input id="payment_code" name="payment_code" type="text" class="validate" required>
           <label for="payment_code">Payment code</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12 m5 offset-m1">
-          <input id="order_user_id" type="text" class="validate" required>
+          <input id="order_user_id" name="order_user_id" type="text" class="validate" required>
           <label for="order_user_id">User ID</label>
         </div>
         <div class="input-field col s12 m5">
-          <input id="order_trip_id" type="text" class="validate" required>
+          <input id="order_trip_id" name="order_trip_id" type="text" class="validate" required>
           <label for="order_trip_id">Trip ID</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12 m5 offset-m1">
-          <input id="order_receipt_id" type="text" class="validate" required>
+          <input id="order_receipt_id" name="order_receipt_id" type="text" class="validate" required>
           <label for="order_receipt_id">Receipt ID</label>
         </div>
         <div class="input-field col s12 m5">
-          <input id="order_branch_id" type="text" class="validate" required>
+          <input id="order_branch_id" name="order_branch_id" type="text" class="validate" required>
           <label for="order_branch_id">Branch ID</label>
         </div>
       </div>
@@ -244,22 +244,22 @@ session_start();
 <!--Product Form-->
 
 <div class="container" id="product_form">
-    <form name="product" id="product">
+    <form name="product" id="product" action="./insert/insert_product.php" method="POST">
       <div class="row">
         <div class="input-field col s12 m10 offset-m1">
-          <input id="prod_name" type="text" class="validate" required>
+          <input id="prod_name" name="prod_name" type="text" class="validate" required>
           <label for="prod_name">Product name</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12 m10 offset-m1">
-          <input id="prod_price" type="text" class="validate" required>
+          <input id="prod_price" name="prod_price" type="text" class="validate" required>
           <label for="prod_price">Product price</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12 m10 offset-m1">
-          <input id="img_url" type="text" class="validate" required>
+          <input id="img_url" name="img_url" type="text" class="validate" required>
           <label for="img_url">Image url</label>
         </div>
       </div>
@@ -274,16 +274,16 @@ session_start();
 <!--Review Form-->
 
 <div class="container" id="review_form">
-    <form name="review" id="review">
+    <form name="review" id="review" action="./insert/insert_review.php" method="POST">
       <div class="row">
         <div class="input-field col s12 m10 offset-m1">
-          <input id="review_text" type="text" class="validate" required>
+          <input id="review_text" name="review_text" type="text" class="validate" required>
           <label for="review_text">Review text</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12 m10 offset-m1">
-          <input id="review_user_id" type="text" class="validate" required>
+          <input id="review_user_id" name="review_user_id" type="text" class="validate" required>
           <label for="review_user_id">User ID</label>
         </div>
       </div>
@@ -298,17 +298,17 @@ session_start();
 <!--Shopping Form-->
 
 <div class="container" id="shopping_form">
-    <form name="shopping" id="shopping">
+    <form name="shopping" id="shopping" action="./insert/insert_shopping.php" method="POST">
       <div class="row">
         <div class="input-field col s12 m10 offset-m1">
-          <input id="shopping_price" type="text" class="validate" required>
+          <input id="shopping_price" name="shopping_price" type="text" class="validate" required>
           <label for="shopping_price">Total</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12 m10 offset-m1">
-          <input id="shopping_user_id" type="text" class="validate" required>
-          <label for="shopping_user_id">User ID</label>
+          <input id="shopping_branch_id" name="shopping_branch_id" type="text" class="validate" required>
+          <label for="shopping_branch_id">Branch ID</label>
         </div>
       </div>
       <div class="row">
@@ -322,36 +322,36 @@ session_start();
 <!--Trip Form-->
 
 <div class="container" id="trip_form">
-    <form name="trip" id="trip">
+    <form name="trip" id="trip" action="./insert/insert_trip.php" method="POST">
       <div class="row">
         <div class="input-field col s12 m10 offset-m1">
-          <input id="destination_code" type="text" class="validate" required>
-          <label for="destionation_code">Destination code</label>
+          <input id="destination_code" name="destination_code" type="text" class="validate" required>
+          <label for="destination_code">Destination code</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12 m5 offset-m1">
-          <input id="trip_price" type="text" class="validate" required>
+          <input id="trip_price" name="trip_price" type="text" class="validate" required>
           <label for="trip_price">Total</label>
         </div>
         <div class="input-field col s12 m5">
-          <input id="distance" type="text" class="validate" required>
+          <input id="distance" name="distance" type="text" class="validate" required>
           <label for="distance">Distance</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12 m5 offset-m1">
-          <input id="trip_branch_id" type="text" class="validate" required>
+          <input id="trip_branch_id" name="trip_branch_id" type="text" class="validate" required>
           <label for="trip_branch_id">Branch ID</label>
         </div>
         <div class="input-field col s12 m5">
-          <input id="trip_car_id" type="text" class="validate" required>
+          <input id="trip_car_id" name="trip_car_id" type="text" class="validate" required>
           <label for="trip_car_id">Car ID</label>
         </div>
       </div>
       <div class="row">
       <div class="col s6 m6 offset-s4 offset-m4">
-        <button class="btn waves-effect waves-light save-button" type="submit" name="order_submit" style="margin-top:30px;background:#149BBB">Insert</button>
+        <button class="btn waves-effect waves-light save-button" type="submit" name="trip_submit" style="margin-top:30px;background:#149BBB">Insert</button>
         </div>
       </div>
     </form>
@@ -360,70 +360,68 @@ session_start();
 <!--Users Form-->
 
 <div class="container" id="users_form">
-  <div id="user_bg">
-    <form name="users" id="users">
+    <form name="users" id="users" action="./insert/insert_users.php" method="POST">
       <div class="row">
         <div class="input-field col s12 m5 offset-m1">
-          <input id="first_name" type="text" class="validate" required>
+          <input id="first_name" name="first_name" type="text" class="validate" required>
           <label for="first_name">First name</label>
         </div>
         <div class="input-field col s12 m5">
-          <input id="last_name" type="text" class="validate" required>
+          <input id="last_name" name="last_name" type="text" class="validate" required>
           <label for="last_name">Last name</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12 m5 offset-m1">
-          <input id="phone" type="text" class="validate" required>
+          <input id="phone" name="phone" type="text" class="validate" required>
           <label for="phone">Phone number</label>
         </div>
         <div class="input-field col s12 m5">
-          <input id="postal" type="text" class="validate" required>
+          <input id="postal" name="postal" type="text" class="validate" required>
           <label for="postal">Postal code</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12 m10 offset-m1">
-          <input id="addy" type="text" class="validate" required>
+          <input id="addy" name="addy" type="text" class="validate" required>
           <label for="addy">Address</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12 m10 offset-m1">
-          <input id="email" type="email" class="validate" required>
+          <input id="email" name="email" type="email" class="validate" required>
           <label for="email">Email</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12 m10 offset-m1">
-          <input id="login_id" type="text" class="validate" required>
+          <input id="login_id" name="login_id" type="text" class="validate" required>
           <label for="login_id">Username</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12 m10 offset-m1">
-          <input id="login_password" type="password" class="validate" required>
+          <input id="login_password" name="login_password" type="password" class="validate" required>
           <label for="login_password">Password</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12 m5 offset-m1">
-          <input id="balance" type="text" class="validate" required>
+          <input id="balance" name="balance" type="text" class="validate" required>
           <label for="balance">Balance</label>
         </div>
         <div class="input-field col s12 m5">
-          <input id="admin_val" type="text" class="validate" required>
+          <input id="admin_val" name="admin_val" type="text" class="validate" required>
           <label for="admin_val">Admin value</label>
         </div>
       </div>
       <div class="row">
         <div class="col s6 m6 offset-s4 offset-m4">
-        <button class="btn waves-effect waves-light save-button" type="submit" name="order_submit" style="margin-top:30px;background:#149BBB">Insert</button>
+        <button class="btn waves-effect waves-light save-button" type="submit" name="users_submit" style="margin-top:30px;background:#149BBB">Insert</button>
         </div>
       </div>
       <div class="row"></div>
     </form>
-  </div>
 </div>
 
 <div class="container" id="messages">
