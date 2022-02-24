@@ -60,15 +60,28 @@ session_start();
             try{
                 $selected_table = $_POST['tables'];
                 $get_col = "SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA`='project' AND `TABLE_NAME`='$selected_table'";
-                foreach ($db->query($get_col) as $row){
-                    echo $row['COLUMN_NAME'];
-                }
-                $sql = "SELECT * FROM $selected_table";
-                #foreach ($db->query($sql) as $row){
-
-                #}
+                      echo "<div>
+                        <table class='responsive-table striped centered'>
+                            <thead>
+                              <tr>";
+                                foreach ($db->query($get_col) as $row){
+                                    echo "<th>" . $row['COLUMN_NAME'] . "</th>";
+                                }
+                              echo "</tr>
+                            </thead>";
+                            $sql = "SELECT * FROM $selected_table";
+                            echo "<tbody>";
+                            foreach ($db->query($sql) as $row){
+                              echo "<tr>";
+                              foreach ($db->query($get_col) as $crow){
+                                echo "<td>" . $row[$crow['COLUMN_NAME']] . "</td>";
+                              }
+                              echo "</tr>";
+                            }
+                            echo "</tbody>
+                        </table>";
             } catch(Throwable $e){
-                echo $e;
+                echo "<p>Table could not be displayed</p>";
             }
        }
     }
