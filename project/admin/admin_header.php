@@ -30,7 +30,7 @@
 </ul>
 <nav class="z-depth-0">
     <div class="nav-wrapper">
-      <a href="home.php" class="brand-logo">S<span class="material-icons black-icons" id="globe">travel_explore</span>S</a>
+      <a href="../home.php" class="brand-logo">S<span class="material-icons black-icons" id="globe">travel_explore</span>S</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons" id = "hamburger">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="../home.php">Home</a></li>

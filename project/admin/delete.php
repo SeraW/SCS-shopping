@@ -28,7 +28,7 @@ session_start();
     </div>
     <div class="row table_select">
       <form action="" method="POST">
-        <div class="col s6 offset-s3">
+        <div class="col s10 m6 offset-m3">
             <select class="browser-default choice" id="selection" name="tables">
               <option value="" disabled selected>Select table</option>
                 <?php
@@ -47,7 +47,7 @@ session_start();
                 ?>
             </select>
         </div>
-        <div class="col s3">
+        <div class="col s1 m3">
           <button class="btn waves-effect waves-light save-button" type="submit" name="tables_submit" style="background:#149BBB">Select</button>
         </div>
       </form>
@@ -81,7 +81,7 @@ session_start();
         echo "<div class='container'>";
           echo "<div class='row'>";
             echo "<form action='' method='POST'>";
-              echo "<div class='col s6 offset-s3'>";
+              echo "<div class='col s10 m6 offset-m3'>";
                 echo "<select class='browser-default choice' id='id_select' name='id_select'>";
                   echo "<option value='' disabled selected>Select $table ID</option>";
                     foreach ($db->query($sql) as $row){
@@ -89,7 +89,7 @@ session_start();
                     }
                 echo "</select>";
               echo "</div>";
-              echo "<div class='col s3'>";
+              echo "<div class='col s1 m3'>";
                 echo "<button class='btn waves-effect waves-light save-button' type='submit' name='id_submit' style='background:#149BBB'>Delete</button>";
               echo "</div>";
             echo "</form>";

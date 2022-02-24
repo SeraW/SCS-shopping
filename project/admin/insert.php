@@ -28,7 +28,7 @@ session_start();
         <h2>Insert data below</h2>
     </div>
     <div class="row table_select">
-        <div class="col s6 offset-s3">
+        <div class="col s12 m6 offset-m3">
           <select class="browser-default choice" id="selection">
             <option value="" disabled selected>Select table</option>
             <?php

@@ -28,7 +28,7 @@ session_start();
     </div>
     <div class="row table_select">
       <form action="" method="POST">
-        <div class="col s6 offset-s3">
+        <div class="col s10 m6 offset-m3">
             <select class="browser-default choice" id="selection" name="tables">
               <option value="" disabled selected>Select table</option>
                 <?php
@@ -47,7 +47,7 @@ session_start();
                 ?>
             </select>
         </div>
-        <div class="col s3">
+        <div class="col s1 m3">
           <button class="btn waves-effect waves-light save-button" type="submit" name="tables_submit" style="background:#149BBB">Select</button>
         </div>
       </form>
