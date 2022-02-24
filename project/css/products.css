@@ -37,9 +37,9 @@ body{
 
 #full {
     min-height: 100vh; /* use "vh" instead of % */
+    background:#393D3F;
+
 }
-
-
 
 
 

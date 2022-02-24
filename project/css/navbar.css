@@ -26,3 +26,13 @@ nav ul li a{
 #hamburger {
    color:  #393D3F;
 }
+
+#transparent {
+   color:  #393D3F;
+   background-color: transparent;
+   background-repeat: no-repeat;
+   border: none;
+   cursor: pointer;
+   overflow: hidden;
+   outline: none;
+}
