@@ -113,7 +113,7 @@ VALUES ('Coffee machine', 45.49, 'img/products/coffee.png'),
         ('Rice cooker', 35.99, 'img/products/rice.jpg'),
         ('Toaster', 25.55, 'img/products/toaster.jpg'),
         ('Electric Kettle', 54.99, 'img/products/kettle.jpg'),
-        ('Waffle Maker', 40.00, 'img/products/waffle.jpeg'),
+        ('Waffle Maker', 40.00, 'img/products/waffle.jpg'),
         ('Blender', 149.99, 'img/products/blender.png');
 
 INSERT INTO Shopping (shopping_price, branch_id)
