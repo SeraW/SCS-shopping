@@ -21,6 +21,7 @@
 <script>
     let id = 0;
     let cartCount = 0;
+    const cart = [];
 
     function allowDrop(ev) {
         ev.preventDefault();
@@ -35,6 +36,7 @@
         var productName = document.getElementById(`name${id}`).textContent;
         var productCost = document.getElementById(`price${id}`).textContent;
         cartCount += 1;
+        shoppingCart(id);
         var html = `<div class="card horizontal small" id="card${cartCount}">
                         <div class="card-image">
                             <img src="${img}">
@@ -49,11 +51,23 @@
                             </div>
                         </div>
                     </div>`
-        document.querySelector('#div1').insertAdjacentHTML('afterend', html);
+        document.querySelector('#div1').insertAdjacentHTML('beforeend', html);
+        jsonCart = JSON.stringify(cart);
     }
 
     function removeCart(removeID) {
         document.getElementById(`card${removeID}`).remove();
+    }
+
+    function shoppingCart(value) {
+        cart.push(value);
+    }
+
+    function WriteCookie() {
+        cookievalue = escape(document.myform.customer.value) + ";";
+        document.cookie = "cart=" + jsonCart;
+        window.location.href = "http://localhost/CPS630/Project/shoppingcart.php";
+
     }
 </script>
 
@@ -96,6 +110,9 @@
         <div class="col s3" id="full" ondrop="drop(event)" ondragover="allowDrop(event)">
             <div id="div1">
                 <h1>Shopping Cart</h1>
+                <form name="myform">
+                    <input type="hidden" name="customer" />
+                </form>
             </div>
         </div>
     </div>
