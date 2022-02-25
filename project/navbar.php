@@ -37,7 +37,7 @@ session_start();
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="home.php">Home</a></li>
         <li><a href="about.php">About</a></li>
-        <li><a href="products.php">Products</a></li>
+        <li><a href="#!">Products</a></li>
         <li><a href="reviews.php">Reviews</a></li>
         <li><a href="contact.php">Contact</a></li>
         <?php
@@ -53,16 +53,10 @@ session_start();
             if ($row[0] == 1){
               echo "<li><a class='dropdown-trigger' href='#!' data-target='dropdown'>Admin<i class='material-icons right'>arrow_drop_down</i></a></li>";
               echo "<li><a href='./validation/logout.php'>Logout</a></li>";
-              echo "<li><form id='myform' action='WriteCookie();' method='post'>";
-              echo "<a href='javascript:WriteCookie();' onclick='document.getElementById('myform').submit();'><i class='material-icons'>shopping_cart</i></a>";
-              echo "<input type='hidden' name='customer'/>";
-              echo "</form></li>";
+              echo "<li><a href='#!'><i class='material-icons'>shopping_cart</i></a></li>";
             } else {
               echo "<li><a href='./validation/logout.php'>Logout</a></li>";
-              echo "<li><form id='myform' action='WriteCookie();' method='post'>";
-              echo "<a href='javascript:WriteCookie();' onclick='document.getElementById('myform').submit();'><i class='material-icons'>shopping_cart</i></a>";
-              echo "<input type='hidden' name='customer'/>";
-              echo "</form></li>";
+              echo "<li><a href='#!'><i class='material-icons'>shopping_cart</i></a></li>";
             }
           } else{
             echo "<li><a href='login.php'>Login</a></li>";
@@ -92,21 +86,10 @@ session_start();
             if ($row[0] == 1){
               echo "<li><a class='dropdown-trigger' href='#!' data-target='mobiledrop'>Admin<i class='material-icons right'>arrow_drop_down</i></a></li>";
               echo "<li><a href='./validation/logout.php'>Logout</a></li>";
-              //On mobile, in the burger menu, the formatting for this is scuffed af when I do this, but when I leave it alone like the commented out, its fine, but idk how to fix
-              //echo "<li><a href='#!'><i class='material-icons'>shopping_cart</i></a></li>";
-              echo "<li><form id='form1' action='WriteCookie();' method='post'>";
-              echo "<a href='javascript:WriteCookie();' onclick='document.getElementById('form1').submit();'><i class='material-icons'>shopping_cart</i></a>";
-              echo "<input type='hidden' name='cart'/>";
-              echo "</form></li>";
-
+              echo "<li><a href='#!'><i class='material-icons'>shopping_cart</i></a></li>";
             } else {
               echo "<li><a href='./validation/logout.php'>Logout</a></li>";
-              //On mobile, in the burger menu, the formatting for this is scuffed af when I do this, but when I leave it alone like the commented out, its fine, but idk how to fix
-              //echo "<li><a href='#!'><i class='material-icons'>shopping_cart</i></a></li>";
-              echo "<li><form id='form1' action='WriteCookie();' method='post'>";
-              echo "<a href='javascript:WriteCookie();' onclick='document.getElementById('form1').submit();'><i class='material-icons'>shopping_cart</i></a>";
-              echo "<input type='hidden' name='cart'/>";
-              echo "</form></li>";
+              echo "<li><a href='#!'><i class='material-icons'>shopping_cart</i></a></li>";
             }
           } else{
             echo "<li><a href='login.php'>Login</a></li>";
