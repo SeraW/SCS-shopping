@@ -22,7 +22,7 @@
         <div id ="home-info">
             <h1>Welcome to <span class="highlight">Smart Customer Services.</span></h1>
             <h2>Learn more about our Products and Services.</h2>
-            <a class="waves-effect waves-light btn" href="types.php" style="background: #149BBB"><i class="material-icons left">shopping_basket</i>Services</a>
+            <a class="waves-effect waves-light btn" href="products.php" style="background: #149BBB"><i class="material-icons left">shopping_basket</i>Products</a>
         </div>
         <img src="./img/homeimg.svg" alt="Ecommerce" width="400" height="400">
     </div>

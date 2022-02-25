@@ -37,7 +37,7 @@ session_start();
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="home.php">Home</a></li>
         <li><a href="about.php">About</a></li>
-        <li><a href="#!">Products</a></li>
+        <li><a href="products.php">Products</a></li>
         <li><a href="reviews.php">Reviews</a></li>
         <li><a href="contact.php">Contact</a></li>
         <?php
@@ -70,7 +70,7 @@ session_start();
     <ul class="sidenav" id="mobile-demo">
         <li><a href="home.php">Home</a></li>
         <li><a href="about.php">About</a></li>
-        <li><a href="#!">Products</a></li>
+        <li><a href="products.php">Products</a></li>
         <li><a href="reviews.php">Reviews</a></li>
         <li><a href="contact.php">Contact</a></li>
         <?php

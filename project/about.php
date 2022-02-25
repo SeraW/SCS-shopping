@@ -20,7 +20,7 @@
 <body>
     <div id="about-desc">
         <h1>Our <span>Goal</span></h1>
-        <p>We strive to make online shopping and traveling easier, more accessible, and environmentally friendly. We provide smart green delivery services for the products on our website to help reduce your stress and frustration.</p>
+        <p>We strive to make online shopping easier, more accessible, and environmentally friendly. We provide smart green delivery services for the products on our website to help reduce your stress and frustration.</p>
     </div>
     <div id="about-team">
         <h1>Meet Our <span>Team</span></h1>
