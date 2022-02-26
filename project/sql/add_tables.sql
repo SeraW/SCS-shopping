@@ -75,13 +75,13 @@ CREATE TABLE IF NOT EXISTS Messages (
 );
 
 INSERT INTO Users (first_name, last_name, phone, email, addy, postal, login_id, login_password, balance, admin_val)
-VALUES ('Dave', 'Tran', '000-000-0000', 'dave.tran@gmail.com', '22 road town', 'L04H7S', 'davetran', 'coolguy', 500.00, true),
-        ('Anthony', 'Tran', '000-000-0001', 'atran@gmail.com', '521 avenue road', 'L2H83T', 'atran', 'iplaygenshin', 500.00, true),
-        ('Sera', 'Wong', '000-000-0002', 'swong@gmail.com', '982 drive area', 'L0D27H', 'swong', 'catscats', 500.00, true),
-        ('Nanamin', 'Kento', '000-000-0003', 'nkento@gmail.com', '123 area road', 'P9H2J7', 'nkento', 'seventothree', 700.00, false),
-        ('Seto', 'Kaiba', '000-000-0004', 'skaiba@gmail.com', '192 kaiba world', 'W29J72', 'skaiba', 'imtheceo', 5000.00, false),
-        ('Yae', 'Miko', '000-000-0005', 'ymiko@gmail.com', '103 sakura tree', 'U8E2K8', 'ymiko', 'fivestar', 900.50, false),
-        ('Jimothy', 'Jacobs', '000-000-0006', 'jimothy@gmail.com', '12 town road', 'H8DL0S', 'jjacob', 'password', 300, false);
+VALUES ('Dave', 'Tran', '000-000-0000', 'dave.tran@gmail.com', '2598 Islington Ave', 'M8V3B6', 'davetran', 'coolguy', 500.00, true),
+        ('Anthony', 'Tran', '000-000-0001', 'atran@gmail.com', '3395 Islington Ave', 'M8V3B6', 'atran', 'iplaygenshin', 500.00, true),
+        ('Sera', 'Wong', '000-000-0002', 'swong@gmail.com', '3090 Wellington Street', 'M9C3J5', 'swong', 'catscats', 500.00, true),
+        ('Nanamin', 'Kento', '000-000-0003', 'nkento@gmail.com', '4361 Yonge Street', 'M4W1J7', 'nkento', 'seventothree', 700.00, false),
+        ('Seto', 'Kaiba', '000-000-0004', 'skaiba@gmail.com', '2514 Merton Street', 'M1L3K7', 'skaiba', 'imtheceo', 5000.00, false),
+        ('Yae', 'Miko', '000-000-0005', 'ymiko@gmail.com', '1522 Adelaide St', 'M5H1P6', 'ymiko', 'fivestar', 900.50, false),
+        ('Jimothy', 'Jacobs', '000-000-0006', 'jimothy@gmail.com', '1329 Runnymede Rd', 'M6S2Z7', 'jjacob', 'password', 300, false);
 
 
 INSERT INTO Review (review_text, user_id)
@@ -113,7 +113,7 @@ VALUES ('Coffee machine', 45.49, 'img/products/coffee.png'),
         ('Rice cooker', 35.99, 'img/products/rice.jpg'),
         ('Toaster', 25.55, 'img/products/toaster.jpg'),
         ('Electric Kettle', 54.99, 'img/products/kettle.jpg'),
-        ('Waffle Maker', 40.00, 'img/products/waffle.jpg'),
+        ('Waffle Maker', 40.00, 'img/products/waffle.jpeg'),
         ('Blender', 149.99, 'img/products/blender.png');
 
 INSERT INTO Shopping (shopping_price, branch_id)
@@ -125,4 +125,3 @@ INSERT INTO Orders (date_issued, date_completed, order_price, payment_code, user
 VALUES ('2022-01-20', '2022-01-25', 81.48, 0000, 0003, 0000, 0000, 0000),
         ('2022-01-26', '2022-02-01', 107.03, 0001, 0004,0001, 0001, 0001),
         ('2022-02-10', '2022-02-13', 45.49, 0002, 0005, 0002, 0002, 0002);
-
