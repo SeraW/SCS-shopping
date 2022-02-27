@@ -26,14 +26,12 @@ if (isset($_SESSION["username"])) {
     $s = "SELECT addy FROM users WHERE login_id = '$user'";
     $result = mysqli_query($db, $s);
     $row = mysqli_fetch_row($result);
+} else {
+    header('Location: login.php');
 }
 ?>
 
 <script>
-    let id = 0;
-    let cartCount = 0;
-    const cart = [];
-
     function initMap() {
         const directionsService = new google.maps.DirectionsService();
         const directionsRenderer = new google.maps.DirectionsRenderer();
@@ -54,8 +52,6 @@ if (isset($_SESSION["username"])) {
         document.getElementById("end").addEventListener("change", onChangeHandler);
     }
 
-
-
     function calculateAndDisplayRoute(directionsService, directionsRenderer) {
         directionsService
             .route({
@@ -72,18 +68,11 @@ if (isset($_SESSION["username"])) {
             })
             .catch((e) => window.alert("Directions request failed due to " + status));
     }
-
-    document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('select');
-        var instances = M.FormSelect.init(elems);
-    });
-
-    $(document).ready(function() {
-        $('select').formSelect();
-    });
 </script>
 
-<body>
+<script src="shoppingcart.js"></script>
+
+<body onload="initMap()">
     <div class="row">
         <div class="container">
             <div class="col s12 m12 l9">
@@ -91,7 +80,7 @@ if (isset($_SESSION["username"])) {
                 <div id="mapdiv" class="col s12 m12 l9">
                     <div id="map"></div>
                 </div>
-                <form id="order" action="invoicecomplete.php" method="post">
+                <form id="order" action="process_order.php" method="post">
 
                     <div class="input-field col s12">
                         <select name="end" id="end" required>
@@ -113,16 +102,18 @@ if (isset($_SESSION["username"])) {
                         <select name="car" id="car" required>
                             <option value="" disabled selected="">Choose a Car</option>
                             <?php
-                            $commandText = "SELECT model, availabile, car_id FROM car";
+                            $commandText = "SELECT model, availibility, car_id FROM car";
                             $result = mysqli_query($db, $commandText);
 
                             //$counter = 0;
                             while ($row = mysqli_fetch_assoc($result)) {
                                 //$counter += 1;
                                 $model = $row["model"];
-                                $available = $row["availabile"];
+                                $available = $row["availibility"];
                                 $car_id = $row["car_id"];
-                                echo '<option value="' . $car_id . '">' . $model . ' - (' . $available . ')</option>';
+                                if ($available == "Available") {
+                                    echo '<option value="' . $car_id . '">' . $model . ' - (' . $available . ')</option>';
+                                }
                             };
                             ?>
                         </select>
@@ -130,11 +121,12 @@ if (isset($_SESSION["username"])) {
                     <div class="input-field col s12">
                         <select name="date" id="date" required>
                             <option value="" disabled selected="">Choose a Delivery Option</option>
-                            <option value="0">FREE - No-Rush Shipping</option>
-                            <option value="6.99">$6.99 - One-Day Shipping</option>
-                            <option value="5.99">$5.99 - Two-Day Shipping</option>
+                            <option value="7">FREE - No-Rush Shipping</option>
+                            <option value="1">$6.99 - One-Day Shipping</option>
+                            <option value="2">$5.99 - Two-Day Shipping</option>
                         </select>
                     </div>
+                    <input type="hidden" id="FinalValue" name="FinalValue" value="128.98">
                     <button class="btn waves-effect waves-light save-button" type="submit" name="trip_submit" style="margin-top:30px;background:#149BBB">Place Order</button>
                 </form>
 
@@ -150,44 +142,46 @@ if (isset($_SESSION["username"])) {
                                 <span style="color:black; font-weight:bold; font-size: 175%" class="card-title">Summary</span>
                                 <?php
                                 $counter = 0;
-                                $finalcart = json_decode($_COOKIE['cart'], true);
-                                $total = 0;
-                                for ($i = 0; $i < count($finalcart); $i++) {
-                                    $commandText = "SELECT prod_name, prod_price, img_url FROM product WHERE prod_id=$finalcart[$i]";
-                                    $result = mysqli_query($db, $commandText);
-                                    $row = mysqli_fetch_row($result);
+                                if (isset($_COOKIE['cart'])) {
+                                    $finalcart = json_decode($_COOKIE['cart'], true);
+                                    $total = 0;
+                                    for ($i = 0; $i < count($finalcart); $i++) {
+                                        $commandText = "SELECT prod_name, prod_price, img_url FROM product WHERE prod_id=$finalcart[$i]";
+                                        $result = mysqli_query($db, $commandText);
+                                        $row = mysqli_fetch_row($result);
 
-                                    $price = $row[1];
-                                    $total += $price;
+                                        $price = $row[1];
+                                        $total += $price;
+                                    }
+                                    echo
+                                    '
+                                    <p id="subtotal">Subtotal: $' . number_format((float)$total, 2, '.', '') . '</p>
+                                    <p id="shipping">Shipping & Handling: $0</p>
+                                    <p>Taxes: $' . number_format((float)$total * .13, 2, '.', '') . '</p>
+                                    <p id="total">TOTAL: $' . number_format((float)$total * 1.13, 2, '.', '') . '</p>
+                                    ';
                                 }
-                                echo
-                                '
-                                <p id="subtotal">Subtotal: $' . number_format((float)$total, 2, '.', '') . '</p>
-                                <p id="shipping">Shipping & Handling: $0</p>
-                                <p>Taxes: $' . number_format((float)$total * .13, 2, '.', '') . '</p>
-                                <p id="total">TOTAL: $' . number_format((float)$total * 1.13, 2, '.', '') . '</p>
-                                ';
-                                $total;
                                 ?>
                             </div>
                         </div>
                     </div>
                     <?php
                     $counter = 0;
-                    $finalcart = json_decode($_COOKIE['cart'], true);
+                    if (isset($_COOKIE['cart'])) {
+                        $finalcart = json_decode($_COOKIE['cart'], true);
 
-                    for ($i = 0; $i < count($finalcart); $i++) {
-                        $commandText = "SELECT prod_name, prod_price, img_url FROM product WHERE prod_id=$finalcart[$i]";
-                        $result = mysqli_query($db, $commandText);
-                        $row = mysqli_fetch_row($result);
+                        for ($i = 0; $i < count($finalcart); $i++) {
+                            $commandText = "SELECT prod_name, prod_price, img_url FROM product WHERE prod_id=$finalcart[$i]";
+                            $result = mysqli_query($db, $commandText);
+                            $row = mysqli_fetch_row($result);
 
-                        $counter += 1;
-                        $name = $row[0];
-                        $price = $row[1];
-                        $img = $row[2];
+                            $counter += 1;
+                            $name = $row[0];
+                            $price = $row[1];
+                            $img = $row[2];
 
-                        echo
-                        '<div class="card horizontal small" id="card' . $counter . '">
+                            echo
+                            '<div class="card horizontal small" id="card' . $counter . '">
                             <div class="card-image">
                                 <img src="' . $img . '">
                             </div>
@@ -198,32 +192,14 @@ if (isset($_SESSION["username"])) {
                                 </div>
                             </div>
                         </div>';
+                        }
                     }
-
                     ?>
                 </div>
             </div>
         </div>
     </div>
-    <script>
-        $("#order").change(function() {
-            var shipping = "0";
-            var total = 0;
-            var totalcost = 0;
-            if ($('#date').val() == "6.99") {
-                shipping = "6.99";
-            } else if ($('#date').val() == "5.99") {
-                shipping = "5.99";
-            } else if ($('#date').val() == "0") {
-                shipping = "0";
-            }
-            totalcost = document.getElementById("subtotal").textContent;
-            total = Number(totalcost.slice(11)) * 1.13 + Number(shipping);
-            console.log(total);
 
-            $('#shipping').text("Shipping & Handling: $" + shipping);
-            $('#total').text("TOTAL: $" + Math.round((total + Number.EPSILON) * 100) / 100);
-        });
     </script>
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDf5iT2KI8tPal0EAflGoI2WNfnXXp3nHc&callback=initMap&v=weekly" async></script>

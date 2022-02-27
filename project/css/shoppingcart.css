@@ -40,18 +40,15 @@ body {
   min-height: 100vh; /* use "vh" instead of % */
 }
 
-@media only screen and (max-width: 1600px) {
-  .card.horizontal.small .card-image img,
-  .card.horizontal.medium .card-image img,
-  .card.horizontal.large .card-image img {
-    display: none;
-  }
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+#map {
+  height: 500px;
+  width: 100%;
+  position: relative;
 }
 
-@media only screen and (max-width: 980px) {
-  .card.horizontal.small .card-image img,
-  .card.horizontal.medium .card-image img,
-  .card.horizontal.large .card-image img {
-    display: block;
-  }
+#mapdiv {
+  height: 100%;
+  width: 100%;
 }

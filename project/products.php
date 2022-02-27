@@ -16,64 +16,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 
-<?php include 'navbar.php' ?>
+<?php include 'navbar.php';
+if (!isset($_SESSION['username'])) {
+    header('Location: login.php');
+}
+?>
 
-<script>
-    let id = 0;
-    let cartCount = 0;
-    const cart = [];
-
-    function allowDrop(ev) {
-        ev.preventDefault();
-    }
-
-    function drag(ev) {
-        id = ev;
-    }
-
-    function drop(ev) {
-        var img = document.getElementById(`img${id}`).src;
-        var productName = document.getElementById(`name${id}`).textContent;
-        var productCost = document.getElementById(`price${id}`).textContent;
-        cartCount += 1;
-        shoppingCart(id);
-        var html = `<div class="card horizontal small" id="card${cartCount}">
-                        <div class="card-image">
-                            <img src="${img}">
-                        </div>
-                        <div class="card-stacked">
-                            <div class="card-content">
-                                <span style="color:black; font-weight:bold" class="card-title">${productName}</span>
-                                <p>${productCost}</p>
-                            </div>
-                            <div class="card-action">
-                                <a href="javascript:void(0);" onclick="removeCart(${cartCount});">Remove From Cart</a>
-                            </div>
-                        </div>
-                    </div>`
-        document.querySelector('#div1').insertAdjacentHTML('beforeend', html);
-        jsonCart = JSON.stringify(cart);
-    }
-
-    function removeCart(removeID) {
-        document.getElementById(`card${removeID}`).remove();
-    }
-
-    function shoppingCart(value) {
-        cart.push(value);
-    }
-
-    function WriteCookie() {
-        cookievalue = escape(document.myform.customer.value) + ";";
-        document.cookie = "cart=" + jsonCart;
-        window.location.href = "http://localhost/CPS630/Project/shoppingcart.php";
-
-    }
-</script>
+<script src="products.js"></script>
 
 <body>
     <div class="row">
-        <div class="col s9">
+        <div class="col s12 m12 l9">
             <h1>Products</h1>
             <?php
             if (isset($_SESSION["username"])) {
@@ -107,12 +60,50 @@
             ?>
         </div>
 
-        <div class="col s3" id="full" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="col s12 m12 l3" id="full" ondrop="drop(event)" ondragover="allowDrop(event)">
             <div id="div1">
-                <h1>Shopping Cart</h1>
+                <h1>Cart</h1>
                 <form name="myform">
                     <input type="hidden" name="customer" />
                 </form>
+                <?php
+                if (isset($_SESSION["username"])) {
+                    $db = mysqli_connect("localhost", "root", "", "project");
+                    if ($db->connect_error) {
+                        die("Connection failed: " . $conn->connect_error);
+                    }
+                    $counter = 0;
+
+                    if (isset($_COOKIE['cart'])) {
+                        $finalcart = json_decode($_COOKIE['cart'], true);
+                        for ($i = 0; $i < count($finalcart); $i++) {
+                            $commandText = "SELECT prod_name, prod_price, img_url FROM product WHERE prod_id=$finalcart[$i]";
+                            $result = mysqli_query($db, $commandText);
+                            $row = mysqli_fetch_row($result);
+
+                            $counter += 1;
+                            $name = $row[0];
+                            $price = $row[1];
+                            $img = $row[2];
+
+                            echo '<div class="card horizontal small" id="card' . $counter . '">
+                                <div class="card-image">
+                                    <img src="' . $img . '">
+                                </div>
+                                <div class="card-stacked">
+                                    <div class="card-content">
+                                        <span style="color:black; font-weight:bold" class="card-title">' . $name . '</span>
+                                        <p>$' . $price . '</p>
+                                    </div>
+                                    <div class="card-action">
+                                        <a href="javascript:void(0);" id="remove' . $counter . '" onclick="removeCart(' . $counter . ');">Remove From Cart</a>
+                                    </div>
+                                </div>
+                            </div>';
+                        }
+                    }
+                }
+                ?>
             </div>
         </div>
     </div>
