@@ -53,10 +53,10 @@ session_start();
             if ($row[0] == 1){
               echo "<li><a class='dropdown-trigger' href='#!' data-target='dropdown'>Admin<i class='material-icons right'>arrow_drop_down</i></a></li>";
               echo "<li><a href='./validation/logout.php'>Logout</a></li>";
-              echo "<li><a href='#!'><i class='material-icons'>shopping_cart</i></a></li>";
+              echo "<li><a href='shoppingcart.php'><i class='material-icons'>shopping_cart</i></a></li>";
             } else {
               echo "<li><a href='./validation/logout.php'>Logout</a></li>";
-              echo "<li><a href='#!'><i class='material-icons'>shopping_cart</i></a></li>";
+              echo "<li><a href='shoppingcart.php'><i class='material-icons'>shopping_cart</i></a></li>";
             }
           } else{
             echo "<li><a href='login.php'>Login</a></li>";
@@ -86,10 +86,10 @@ session_start();
             if ($row[0] == 1){
               echo "<li><a class='dropdown-trigger' href='#!' data-target='mobiledrop'>Admin<i class='material-icons right'>arrow_drop_down</i></a></li>";
               echo "<li><a href='./validation/logout.php'>Logout</a></li>";
-              echo "<li><a href='#!'><i class='material-icons'>shopping_cart</i></a></li>";
+              echo "<li><a href='shoppingcart.php'><i class='material-icons'>shopping_cart</i></a></li>";
             } else {
               echo "<li><a href='./validation/logout.php'>Logout</a></li>";
-              echo "<li><a href='#!'><i class='material-icons'>shopping_cart</i></a></li>";
+              echo "<li><a href='shoppingcart.php'><i class='material-icons'>shopping_cart</i></a></li>";
             }
           } else{
             echo "<li><a href='login.php'>Login</a></li>";
