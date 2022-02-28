@@ -53,7 +53,7 @@ session_start();
           $row = mysqli_fetch_row($result);
           if ($row[0] == 1) {
             echo "<li><a class='dropdown-trigger' href='#!' data-target='dropdown'>Admin<i class='material-icons right'>arrow_drop_down</i></a></li>";
-            echo "<li><a href='./validation/logout.php'>Logout</a></li>";
+            echo "<li><a href='./validation/logout.php' onClick='logout()'>Logout</a></li>";
             echo "<li><a href='shoppingcart.php'><i class='material-icons'>shopping_cart</i></a></li>";
           } else {
             echo "<li><a href='./validation/logout.php'>Logout</a></li>";
@@ -86,7 +86,7 @@ session_start();
       $row = mysqli_fetch_row($result);
       if ($row[0] == 1) {
         echo "<li><a class='dropdown-trigger' href='#!' data-target='mobiledrop'>Admin<i class='material-icons right'>arrow_drop_down</i></a></li>";
-        echo "<li><a href='./validation/logout.php'>Logout</a></li>";
+        echo "<li><a href='./validation/logout.php' onClick='logout()'>Logout</a></li>";
         echo "<li><a href='shoppingcart.php'><i class='material-icons'>shopping_cart</i></a></li>";
       } else {
         echo "<li><a href='./validation/logout.php'>Logout</a></li>";
@@ -111,4 +111,11 @@ session_start();
       coverTrigger: false
     });
   });
+
+  const logout = () => {
+    var allCookies = document.cookie.split(';');
+    for (var i = 0; i < allCookies.length; i++)
+      document.cookie = allCookies[i] + "=;expires="
+      + new Date(0).toUTCString();
+  }
 </script>
