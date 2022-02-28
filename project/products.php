@@ -87,7 +87,7 @@ if (!isset($_SESSION['username'])) {
                             $price = $row[1];
                             $img = $row[2];
 
-                            echo '<div class="card horizontal small" id="card' . $counter . '">
+                            echo '<div class="card horizontal" id="card' . $counter . '">
                                 <div class="card-image">
                                     <img src="' . $img . '">
                                 </div>
@@ -96,7 +96,7 @@ if (!isset($_SESSION['username'])) {
                                         <span style="color:black; font-weight:bold" class="card-title">' . $name . '</span>
                                         <p>$' . $price . '</p>
                                     </div>
-                                    <div class="card-action right-align">
+                                    <div class="card-action" >
                                         <a href="javascript:void(0);" id="remove' . $counter . '" onclick="removeCart(' . $counter . ');" style="color:#149BBB"><i class="material-icons">delete</i></a>
                                     </div>
                                 </div>
