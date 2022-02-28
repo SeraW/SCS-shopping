@@ -46,7 +46,7 @@ if (!isset($_SESSION['username'])) {
                     $img = $row["img_url"];
                     echo '<div class="col s12 m6 l4">
                         <div class="card" id=' . $counter . ' draggable="true" ondragstart="drag(this.id)">
-                            <div class="card-image">
+                            <div class="card-image valign-wrapper" id="productsonly">
                                 <img class="responsive-img img-products" id="img' . $counter . '" src="./' . $img . '">
                                 <a class="btn-floating halfway-fab" onClick="cartBtn(' .$counter. ')" style="background: #149BBB"><i class="material-icons left">add</i></a>   
                             </div>

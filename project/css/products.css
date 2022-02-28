@@ -17,11 +17,10 @@ body {
 
 /* when resizing, images get fucked as hell, so hardcode the width too LMAO */
 
-.img-products {
-  height: 400px !important;
-  width: 400px;
-}
+#productsonly.card-image{
+  height: 400px; /* Your height here */
 
+}
 
 .card.medium .card-image,
 .card.large .card-image {
