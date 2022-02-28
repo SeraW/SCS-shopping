@@ -13,6 +13,33 @@ function allowDrop(ev) {
 
 function drag(ev) {
     id = ev;
+    console.log(id);
+}
+
+function cartBtn(ev){
+    console.log(ev);
+    var img = document.getElementById(`img${ev}`).src;
+    var productName = document.getElementById(`name${ev}`).textContent;
+    var productCost = document.getElementById(`price${ev}`).textContent;
+    cartCount += 1;
+    shoppingCart(ev);
+    var html = `<div class="card horizontal small" id="card${cartCount}">
+                    <div class="card-image">
+                        <img src="${img}">
+                    </div>
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <span style="color:black; font-weight:bold" class="card-title">${productName}</span>
+                            <p>${productCost}</p>
+                        </div>
+                        <div class="card-action">
+                            <a id="remove${cartCount}" href="javascript:void(0);" onclick="removeCart(${cartCount});">Remove From Cart</a>
+                        </div>
+                    </div>
+                </div>`
+    document.querySelector('#div1').insertAdjacentHTML('beforeend', html);
+    jsonCart = JSON.stringify(cart);
+    WriteCookie();
 }
 
 function drop(ev) {

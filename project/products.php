@@ -44,10 +44,11 @@ if (!isset($_SESSION['username'])) {
                     $name = $row["prod_name"];
                     $price = $row["prod_price"];
                     $img = $row["img_url"];
-                    echo '<div class="col s12 m6 l3">
-                        <div class="card large" id=' . $counter . ' draggable="true" ondragstart="drag(this.id)">
+                    echo '<div class="col s12 m6 l4">
+                        <div class="card" id=' . $counter . ' draggable="true" ondragstart="drag(this.id)">
                             <div class="card-image">
                                 <img class="responsive-img img-products" id="img' . $counter . '" src="./' . $img . '">
+                                <a class="btn-floating halfway-fab" onClick="cartBtn(' .$counter. ')" style="background: #149BBB"><i class="material-icons left">add</i></a>   
                             </div>
                             <div class="card-content">
                                 <span style="color:black; font-weight:bold" class="card-title" id="name' . $counter . '">' . $name . '</span>
