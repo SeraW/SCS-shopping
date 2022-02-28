@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>SCS | Contact</title>
+    <title>SCS | Products</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--Import materialize.css-->

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>SCS | Order Complete</title>
+    <title>SCS | Thank You</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--Import materialize.css-->
