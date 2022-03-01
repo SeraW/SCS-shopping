@@ -48,7 +48,7 @@ if ($db->connect_error) {
                             $name= "SELECT first_name, last_name FROM users u, review r WHERE review_id=1 AND u.user_id=r.user_id";
                             $result = mysqli_query($db, $name);
                             $row = mysqli_fetch_row($result);
-                            echo '<a href="#">' . $row[0] . " " . $row[1] . '</a>
+                            echo '<a href="#" style="color:#149BBB">' . $row[0] . " " . $row[1] . '</a>
                             </div>';
                         } catch(throwable $e){
                             echo "<p>Error displaying review</p>";
@@ -74,7 +74,7 @@ if ($db->connect_error) {
                             $name= "SELECT first_name, last_name FROM users u, review r WHERE review_id=2 AND u.user_id=r.user_id";
                             $result = mysqli_query($db, $name);
                             $row = mysqli_fetch_row($result);
-                            echo '<a href="#">' . $row[0] . " " . $row[1] . '</a>
+                            echo '<a href="#" style="color:#149BBB">' . $row[0] . " " . $row[1] . '</a>
                             </div>';
                         } catch(throwable $e){
                             echo "<p>Error displaying review</p>";
@@ -100,7 +100,7 @@ if ($db->connect_error) {
                             $name= "SELECT first_name, last_name FROM users u, review r WHERE review_id=3 AND u.user_id=r.user_id";
                             $result = mysqli_query($db, $name);
                             $row = mysqli_fetch_row($result);
-                            echo '<a href="#">' . $row[0] . " " . $row[1] . '</a>
+                            echo '<a href="#" style="color:#149BBB">' . $row[0] . " " . $row[1] . '</a>
                             </div>';
                         } catch(throwable $e){
                             echo "<p>Error displaying review</p>";
@@ -126,7 +126,7 @@ if ($db->connect_error) {
                             $name= "SELECT first_name, last_name FROM users u, review r WHERE review_id=4 AND u.user_id=r.user_id";
                             $result = mysqli_query($db, $name);
                             $row = mysqli_fetch_row($result);
-                            echo '<a href="#">' . $row[0] . " " . $row[1] . '</a>
+                            echo '<a href="#" style="color:#149BBB">' . $row[0] . " " . $row[1] . '</a>
                             </div>';
                         } catch(throwable $e){
                             echo "<p>Error displaying review</p>";
