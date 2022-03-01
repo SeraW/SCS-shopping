@@ -20,7 +20,7 @@ session_start();
 
 <?php include "admin_header.php"?>
 <body>
-
+<div id="insert-div">
 <div class="container">
     <div class="row">
         <h1>Database <span class="highlight">Administration</span></h1>
@@ -118,8 +118,9 @@ session_start();
       }
     }
 ?>
-
+</div>
 </body>
+<?php include "admin_footer.php"?>
 </html>
 
 <script>

@@ -64,5 +64,7 @@
             unset($_SESSION["error"]);
         }
     ?>
+    
 </body>
+<?php include "whitefooter.php"?>
 </html>

@@ -20,8 +20,8 @@ session_start();
 
 <?php include "admin_header.php"?>
 <body>
-
-<div class="container">
+<div id="insert-div">
+  <div class="container">
     <div class="row">
         <h1>Database <span class="highlight">Administration</span></h1>
         <h2>Select data below</h2>
@@ -52,7 +52,7 @@ session_start();
         </div>
       </form>
     </div>  
-</div>
+  </div>
 
 <?php
     if (isset($_POST['tables_submit'])){
@@ -79,16 +79,17 @@ session_start();
                               echo "</tr>";
                             }
                             echo "</tbody>
-                        </table>";
+                        </table></div>";
             } catch(Throwable $e){
-                echo "<p>Table could not be displayed</p>";
+                echo "<p id='error'>Table could not be displayed</p>";
             }
        }
     }
 ?>
-
+</div>
 
 </body>
+<?php include "admin_footer.php"?>
 </html>
 
 <script>

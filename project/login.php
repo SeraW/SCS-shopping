@@ -47,4 +47,5 @@
         </div>
     </div>
 </body>
+<?php include "whitefooter.php"?>
 </html>
