@@ -23,9 +23,9 @@ function cartBtn(ev){
     var productCost = document.getElementById(`price${ev}`).textContent;
     cartCount += 1;
     shoppingCart(ev);
-    var html = `<div class="card horizontal small" id="card${cartCount}">
-                    <div class="card-image">
-                        <img src="${img}">
+    var html = `<div class="card horizontal" id="card${cartCount}">
+                    <div class="card-image cart-img">
+                        <img class="cartimg" src="${img}">
                     </div>
                     <div class="card-stacked">
                         <div class="card-content">
@@ -33,7 +33,7 @@ function cartBtn(ev){
                             <p>${productCost}</p>
                         </div>
                         <div class="card-action">
-                            <a id="remove${cartCount}" href="javascript:void(0);" onclick="removeCart(${cartCount});">Remove From Cart</a>
+                            <a id="remove${cartCount}" href="javascript:void(0);" onclick="removeCart(${cartCount});" style="color:#149BBB"><i class="material-icons">delete</i></a>
                         </div>
                     </div>
                 </div>`
@@ -49,9 +49,9 @@ function drop(ev) {
     var productCost = document.getElementById(`price${id}`).textContent;
     cartCount += 1;
     shoppingCart(id);
-    var html = `<div class="card horizontal small" id="card${cartCount}">
-                    <div class="card-image">
-                        <img src="${img}">
+    var html = `<div class="card horizontal" id="card${cartCount}">
+                    <div class="card-image cart-img">
+                        <img class="cartimg" src="${img}">
                     </div>
                     <div class="card-stacked">
                         <div class="card-content">
@@ -59,7 +59,7 @@ function drop(ev) {
                             <p>${productCost}</p>
                         </div>
                         <div class="card-action">
-                            <a id="remove${cartCount}" href="javascript:void(0);" onclick="removeCart(${cartCount});">Remove From Cart</a>
+                            <a id="remove${cartCount}" href="javascript:void(0);" onclick="removeCart(${cartCount});" style="color:#149BBB"><i class="material-icons">delete</i></a>
                         </div>
                     </div>
                 </div>`

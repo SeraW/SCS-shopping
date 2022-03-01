@@ -47,7 +47,7 @@ if (!isset($_SESSION['username'])) {
                     echo '<div class="col s12 m6 l4">
                         <div class="card" id=' . $counter . ' draggable="true" ondragstart="drag(this.id)">
                             <div class="card-image valign-wrapper" id="productsonly">
-                                <img class="responsive-img img-products" id="img' . $counter . '" src="./' . $img . '">
+                                <img class="img-products" id="img' . $counter . '" src="./' . $img . '">
                                 <a class="btn-floating halfway-fab" onClick="cartBtn(' .$counter. ')" style="background: #149BBB"><i class="material-icons left">add</i></a>   
                             </div>
                             <div class="card-content">
@@ -88,8 +88,8 @@ if (!isset($_SESSION['username'])) {
                             $img = $row[2];
 
                             echo '<div class="card horizontal" id="card' . $counter . '">
-                                <div class="card-image">
-                                    <img src="' . $img . '">
+                                <div class="card-image cart-img">
+                                    <img class="cartimg" src="' . $img . '">
                                 </div>
                                 <div class="card-stacked">
                                     <div class="card-content">

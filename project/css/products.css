@@ -21,6 +21,19 @@ body {
   height: 400px; /* Your height here */
 
 }
+#productsonly img{
+  width:100% !important;
+  height:50% !important;
+}
+
+.cart-img{
+  width: 40%;
+}
+
+.cartimg{
+  height:100% !important;
+  width:100% !important;
+}
 
 .card.medium .card-image,
 .card.large .card-image {
@@ -51,9 +64,7 @@ p{
 
 
 @media only screen and (max-width: 1600px) {
-  .card.horizontal.small .card-image img,
-  .card.horizontal.medium .card-image img,
-  .card.horizontal.large .card-image img {
+  .card.horizontal .card-image{
     display: none;
     
   }
@@ -63,12 +74,17 @@ p{
 }
 
 @media only screen and (max-width: 980px) {
-  .card.horizontal.small .card-image img,
-  .card.horizontal.medium .card-image img,
-  .card.horizontal.large .card-image img {
+  .card.horizontal .card-image{
     display: block;
   }
   span{
     font-size: 1.3rem !important;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .card.horizontal .card-image{
+    display: none;
+    
   }
 }
