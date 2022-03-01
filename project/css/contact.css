@@ -94,3 +94,9 @@ span{
         height: 150vh;
     }
 }
+
+@media only screen and (max-width: 650px){
+    .page-footer{
+        margin-top: 100px;
+    }
+  }

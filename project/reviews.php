@@ -153,7 +153,7 @@ if ($db->connect_error) {
                     <div class="row">
                         <div class="center-align">
                         <button class="btn waves-effect waves-light save-button" type="submit" name="review_submit" style="background:#149BBB">Submit</button>
-                        </div>
+                        </div><br>
                     </div>
                     </form>
                 </div>';
@@ -168,8 +168,7 @@ if ($db->connect_error) {
             $qrow = mysqli_fetch_row($qresult);
             $user_id = $qrow[0];
             $review_insert = "INSERT into review(review_text, user_id) values ('$review_text', $user_id)";
-            echo $review_insert;
-            #mysqli_query($db, $review_insert);
+            mysqli_query($db, $review_insert);
 
             echo '<div class="container" id="thanks">
                 <h1><br>Thank <span class="highlight">you!</span></h1>
