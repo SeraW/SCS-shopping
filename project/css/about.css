@@ -53,6 +53,7 @@ span{
     background:#393D3F;
     color:#FDFDFF;
     flex-wrap: wrap;
+    margin-bottom: 60px;
 }
 
 #about-team h1{
