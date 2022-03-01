@@ -20,7 +20,7 @@ session_start();
 
 <?php include "admin_header.php"?>
 <body>
-<div id="insert-div">
+<div id="insertheight-div">
   <div class="container">
     <div class="row">
         <h1>Database <span class="highlight">Administration</span></h1>
