@@ -52,7 +52,7 @@ if (!isset($_SESSION['username'])) {
                                 <a class="btn-floating halfway-fab" onClick="cartBtn(' .$counter. ')" style="background: #149BBB"><i class="material-icons left">add</i></a>   
                             </div>
                             <div class="card-content">
-                                <span style="color:black; font-weight:bold" class="card-title" id="name' . $counter . '">' . $name . '</span>
+                                <span class="cardspan" style="color:black; font-weight:bold" class="card-title" id="name' . $counter . '">' . $name . '</span>
                                 <p id="price' . $counter . '">$' . $price . '</p>
                             </div>
                     </div>';
@@ -94,7 +94,7 @@ if (!isset($_SESSION['username'])) {
                                 </div>
                                 <div class="card-stacked">
                                     <div class="card-content">
-                                        <span style="color:black; font-weight:bold" class="card-title">' . $name . '</span>
+                                        <span class-"cardspan" style="color:black; font-weight:bold" class="card-title">' . $name . '</span>
                                         <p>$' . $price . '</p>
                                     </div>
                                     <div class="card-action" >
@@ -112,3 +112,4 @@ if (!isset($_SESSION['username'])) {
 </body>
 
 </html>
+<?php include "productfooter.php"?>

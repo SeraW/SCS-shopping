@@ -60,7 +60,7 @@ body {
   min-height: 100vh; /* use "vh" instead of % */
 }
 
-span{
+.cardspan{
   font-size: 2.5rem !important;
 }
 
@@ -75,7 +75,7 @@ p{
     display: none;
     
   }
-  span{
+  .cardspan{
     font-size: 2rem !important;
   }
 }

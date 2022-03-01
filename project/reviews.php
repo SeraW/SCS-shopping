@@ -157,7 +157,9 @@ if ($db->connect_error) {
                     </div>
                     </form>
                 </div>';
+
     }
+    
 
     if (isset($_POST['review_submit'])){
         try {
@@ -176,23 +178,22 @@ if ($db->connect_error) {
             </div>';
 
         } catch(throwable $e){
-            echo $e;
+            echo "error";
         }
     }
+
+    include_once "greyfooter.php";
 
 
     ?>
 
     
-
-
         
-        
-</div>
-    
+    </div>
 </div>
 
 </body>
+
 </html>
 
 <script>

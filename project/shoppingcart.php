@@ -205,5 +205,5 @@ if (isset($_SESSION["username"])) {
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDf5iT2KI8tPal0EAflGoI2WNfnXXp3nHc&callback=initMap&v=weekly" async></script>
 
 </body>
-
 </html>
+<?php include "productfooter.php"?>

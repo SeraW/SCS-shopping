@@ -29,7 +29,7 @@ function cartBtn(ev){
                     </div>
                     <div class="card-stacked">
                         <div class="card-content">
-                            <span style="color:black; font-weight:bold" class="card-title">${productName}</span>
+                            <span class="cardspan" style="color:black; font-weight:bold" class="card-title">${productName}</span>
                             <p>${productCost}</p>
                         </div>
                         <div class="card-action">
@@ -55,7 +55,7 @@ function drop(ev) {
                     </div>
                     <div class="card-stacked">
                         <div class="card-content">
-                            <span style="color:black; font-weight:bold" class="card-title">${productName}</span>
+                            <span class="cardspan" tyle="color:black; font-weight:bold" class="card-title">${productName}</span>
                             <p>${productCost}</p>
                         </div>
                         <div class="card-action">
