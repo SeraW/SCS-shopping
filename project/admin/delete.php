@@ -87,9 +87,8 @@ session_start();
                     foreach ($db->query($sql) as $row){
                       echo "<option value='$row[$keyword]'> $row[$keyword]</option>"; 
                     }
-                echo "</select>";
-              echo "</div>";
-              echo "<div class='col s1 m3'>";
+                    echo "</select>";
+                  echo "<div class='col s1 m3'>";
                 echo "<button class='btn waves-effect waves-light save-button' type='submit' name='id_submit' style='background:#149BBB'>Delete</button>";
               echo "</div>";
             echo "</form>";
