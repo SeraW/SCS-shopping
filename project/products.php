@@ -26,8 +26,9 @@ if (!isset($_SESSION['username'])) {
 
 <body>
     <div class="row">
-        <div class="col s12 m12 l9">
+        <div class="col s12 m12 l8">
             <h1>Products</h1>
+            <div id="productlist">
             <?php
             if (isset($_SESSION["username"])) {
                 $db = mysqli_connect("localhost", "root", "", "project");
@@ -44,7 +45,7 @@ if (!isset($_SESSION['username'])) {
                     $name = $row["prod_name"];
                     $price = $row["prod_price"];
                     $img = $row["img_url"];
-                    echo '<div class="col s12 m6 l4">
+                    echo '
                         <div class="card" id=' . $counter . ' draggable="true" ondragstart="drag(this.id)">
                             <div class="card-image valign-wrapper" id="productsonly">
                                 <img class="img-products" id="img' . $counter . '" src="./' . $img . '">
@@ -54,14 +55,14 @@ if (!isset($_SESSION['username'])) {
                                 <span style="color:black; font-weight:bold" class="card-title" id="name' . $counter . '">' . $name . '</span>
                                 <p id="price' . $counter . '">$' . $price . '</p>
                             </div>
-                        </div>
                     </div>';
                 }
             }
             ?>
+            </div>
         </div>
 
-        <div class="col s12 m12 l3" id="full" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <div class="col s12 m12 l4" id="full" ondrop="drop(event)" ondragover="allowDrop(event)">
             <div id="div1">
                 <h1>Cart</h1>
                 <form name="myform">

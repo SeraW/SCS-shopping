@@ -15,6 +15,13 @@ body {
   color: #393d3f;
 }
 
+#productlist{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1em;
+  grid-auto-rows: minmax(550px, auto) !important;
+}
+
 /* when resizing, images get fucked as hell, so hardcode the width too LMAO */
 
 #productsonly.card-image{
@@ -74,13 +81,20 @@ p{
 }
 
 @media only screen and (max-width: 980px) {
+  #productlist{
+    grid-template-columns: 1fr 1fr;
+  }
   .card.horizontal .card-image{
     display: block;
   }
-  span{
-    font-size: 1.3rem !important;
-  }
+
 }
+
+@media only screen and (max-width: 500px){
+  #productlist{
+    grid-template-columns: 1fr;
+  }
+} 
 
 @media only screen and (max-width: 300px) {
   .card.horizontal .card-image{
