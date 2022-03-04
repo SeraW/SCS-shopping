@@ -72,7 +72,7 @@ session_start();
           </div>
         </div>
         <div class="row">
-        <div class="col s6 m6 offset-s4 offset-m4">
+        <div class="col s12 m6 offset-m4">
           <button class="btn waves-effect waves-light save-button" type="submit" name="branch_submit" style="margin-top:30px;background:#149BBB">Insert</button>
           </div>
         </div>
@@ -98,7 +98,7 @@ session_start();
           </div>
         </div>
         <div class="row">
-        <div class="col s6 m6 offset-s4 offset-m4">
+        <div class="col s12 m6 offset-m4">
           <button class="btn waves-effect waves-light save-button" type="submit" name="car_submit" style="margin-top:30px;background:#149BBB">Insert</button>
           </div>
         </div>
@@ -153,7 +153,7 @@ session_start();
           </div>
         </div>
         <div class="row">
-        <div class="col s6 m6 offset-s4 offset-m4">
+        <div class="col s12 m6 offset-m4">
           <button class="btn waves-effect waves-light save-button" type="submit" name="order_submit" style="margin-top:30px;background:#149BBB">Insert</button>
           </div>
         </div>
@@ -183,7 +183,7 @@ session_start();
           </div>
         </div>
         <div class="row">
-        <div class="col s6 m6 offset-s4 offset-m4">
+        <div class="col s12 m6 offset-m4">
           <button class="btn waves-effect waves-light save-button" type="submit" name="prod_submit" style="margin-top:30px;background:#149BBB">Insert</button>
           </div>
         </div>
@@ -207,7 +207,7 @@ session_start();
           </div>
         </div>
         <div class="row">
-        <div class="col s6 m6 offset-s4 offset-m4">
+        <div class="col s12 m6 offset-m4">
           <button class="btn waves-effect waves-light save-button" type="submit" name="prod_submit" style="margin-top:30px;background:#149BBB">Insert</button>
           </div>
         </div>
@@ -231,7 +231,7 @@ session_start();
           </div>
         </div>
         <div class="row">
-        <div class="col s6 m6 offset-s4 offset-m4">
+        <div class="col s12 m6 offset-m4">
           <button class="btn waves-effect waves-light save-button" type="submit" name="prod_submit" style="margin-top:30px;background:#149BBB">Insert</button>
           </div>
         </div>
@@ -269,7 +269,7 @@ session_start();
           </div>
         </div>
         <div class="row">
-        <div class="col s6 m6 offset-s4 offset-m4">
+        <div class="col s12 m6 offset-m4">
           <button class="btn waves-effect waves-light save-button" type="submit" name="trip_submit" style="margin-top:30px;background:#149BBB">Insert</button>
           </div>
         </div>
@@ -335,7 +335,7 @@ session_start();
           </div>
         </div>
         <div class="row">
-          <div class="col s6 m6 offset-s4 offset-m4">
+          <div class="col s12 m6 offset-m4">
           <button class="btn waves-effect waves-light save-button" type="submit" name="users_submit" style="margin-top:30px;background:#149BBB">Insert</button>
           </div>
         </div>

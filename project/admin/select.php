@@ -28,7 +28,7 @@ session_start();
     </div>
     <div class="row table_select">
       <form action="" method="POST">
-        <div class="col s10 m6 offset-m3">
+        <div class="col s8 m6 offset-m3">
             <select class="browser-default choice" id="selection" name="tables">
               <option value="" disabled selected>Select table</option>
                 <?php
