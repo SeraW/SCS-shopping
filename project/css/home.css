@@ -27,6 +27,18 @@ body{
     align-items: center;
 }
 
+#searchcontainer{
+    width:100%;
+    height: 30px;
+    text-align: right;
+    background: #FDFDFF;
+    color:#393D3F;
+}
+
+#searchcontainer a{
+    margin-right: 30px;
+}
+
 #home #home-info{
     width: 50%;
 }

@@ -18,6 +18,9 @@
 <?php include 'navbar.php' ?>
 
 <body>
+    <div id="searchcontainer">
+        <a class="searchbtn" href="search.php" ><i class="material-icons" style="color:#393D3F">search</i></a>
+    </div>
     <div id="home">
         <div id ="home-info">
             <h1>Welcome to <span class="highlight">Smart Customer Services.</span></h1>
