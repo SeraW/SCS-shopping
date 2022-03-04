@@ -144,19 +144,19 @@ if ($db->connect_error) {
                         <h1><br>Tell us what you <span class="highlight">think</span></h1><br>
                     </div>
                         <form name="review" id="review" action="" method="POST">
-                        <div class="row">
-                            <div class="input-field col s10 offset-s1">
-                                <textarea id="reviewarea" name="reviewarea" class="materialize-textarea" type="text" data-length="500"></textarea>
-                                <label for="reviewarea">Type your review here</label>
+                            <div class="row">
+                                <div class="input-field col s10 offset-s1">
+                                    <textarea id="reviewarea" name="reviewarea" class="materialize-textarea" type="text" data-length="500"></textarea>
+                                    <label for="reviewarea">Type your review here</label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="center-align">
-                            <button class="btn waves-effect waves-light save-button" type="submit" name="review_submit" style="background:#149BBB">Submit</button>
-                            </div><br>
-                        </div>
+                            <div class="row">
+                                <div class="center-align">
+                                <button class="btn waves-effect waves-light save-button" type="submit" name="review_submit" style="background:#149BBB">Submit</button>
+                                </div><br>
+                            </div>
                         </form>
-                    </div>';
+                </div>';
 
         }
         
@@ -187,12 +187,11 @@ if ($db->connect_error) {
         ?>
 
         
-            
         </div>
     </div>
 </div>
 </body>
-<?php include "greyfooter.php"?>
+
 </html>
 
 <script>
@@ -211,3 +210,4 @@ if ($db->connect_error) {
         
     });
 </script>
+<?php include "greyfooter.php"?>

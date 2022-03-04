@@ -85,6 +85,11 @@ function removeCart(removeID) {
     }
 }
 
+document.body.ondrop = function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+}
+
 function shoppingCart(value) {
     cart.push(value);
 }
