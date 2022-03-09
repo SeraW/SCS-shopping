@@ -117,6 +117,7 @@ session_start();
           }
         }
       }
+      mysqli_close($db);
   ?>
 </div>
 <?php include "admin_footer.php"?>

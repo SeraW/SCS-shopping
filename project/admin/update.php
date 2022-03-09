@@ -57,6 +57,7 @@ if (isset($_POST['query_submit'])){
         }
     }
 }
+mysqli_close($db);
 ?>
 </div>
 </body>

@@ -364,6 +364,7 @@ session_start();
       echo '<p>' . $mrow[0] .'</p>';
       $db->query("DELETE FROM messages");
     }
+    mysqli_close($db);
     ?>
   </div>
 </div>
