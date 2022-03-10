@@ -27,10 +27,10 @@
               <div class="col l4 offset-l2 s12 quicklinks">
                 <h5 ><span class="highlight">Quick</span> links</h5>
                 <ul>
-                  <li><a href="#!">Home</a></li>
-                  <li><a href="#!">About</a></li>
-                  <li><a href="#!">Products</a></li>
-                  <li><a href="#!">Reviews</a></li>
+                  <li><a href="home.php">Home</a></li>
+                  <li><a href="about.php">About</a></li>
+                  <li><a href="products.php">Products</a></li>
+                  <li><a href="reviews.php">Reviews</a></li>
                 </ul>
               </div>
             </div>
@@ -38,7 +38,7 @@
           <div class="footer-copyright">
             <div class="container">
            Copyright © 2022 <span class="highlight">Smart</span> Customer <span class="highlight">Services</span>
-            <a class="right" href="#!" style="color: #FDFDFF"><span class="highlight">Questions? </span><u>Contact us!</u></a>
+           <a href="contact.php" class="right" style="color: #FDFDFF"><span class="highlight">Questions? </span><u>Contact us!</u></a>
             </div>
           </div>
         </footer>
