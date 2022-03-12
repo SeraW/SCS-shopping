@@ -98,9 +98,10 @@ VALUES ('Ryerson University', 43.657374, -79.378804),
 
 INSERT INTO Car (model, availibility)
 VALUES ('Subaru', 'Available'),
-        ('Subaru', 'Available'),
-        ('Subaru', 'Available'),
-        ('Lamborghini', 'Unavailable');
+        ('Corolla Cross SUV', 'Available'),
+        ('Range Rover', 'Available'),
+        ('Bugatti', 'Available'),
+        ('Lamborghini', 'Available');
 
 INSERT INTO Trip (destination_code, trip_price, distance, branch_id, car_id)
 VALUES (0001, 10.50, 52.00, 0000, 0002),
