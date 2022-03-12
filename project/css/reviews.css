@@ -58,7 +58,7 @@ p{
 }
 
 .carousel .carousel-item {
-    width:400px !important;
+    width: 400px !important;
     height: 300px !important;
 }
 
@@ -90,4 +90,20 @@ textarea.materialize-textarea {
     min-height:30vh;
     background:#393D3F;
     color:#FDFDFF;
+}
+
+
+@media only screen and (max-width:400px){
+    .card-content{
+        width: 100vw; 
+    }
+    .carousel-item {
+        transform: none !important;
+        width: 100vw !important;
+    }
+
+    .card-action {
+        width: 100vw !important;
+    }
+     
 }
