@@ -9,16 +9,15 @@
 var myapp = angular.module('demo',[]);
 // notice that our callback function is passed the $http parameter.
 // parameters are injected by the AngularJS system "behind-the-scenes"
-myapp.controller('myController', function ($scope, $http) {
+myapp.controller('myController', function ($scope) {
     // retrieve country data from web service
 
-    var url = 'http://www...continent=EU';
-    $http.get(url)
-        // if successful save retrieved country data in our model
-        .then(function (response) {
-            $scope.countries = response.data;
-        });
-    // some additional model data variable to handle sorting in table
+            $scope.countries = [
+              {name:'Belgium', population:22277766 , capital: 'Brussels'},
+              {name:'Belarus', population: 11443876, capital: 'Minsk'},
+              {name: 'Serbia', population: 7543987, capital: 'Belgrade'}
+            ]
+
     $scope.sortField = 'name';
     $scope.reverse = false;
 });
