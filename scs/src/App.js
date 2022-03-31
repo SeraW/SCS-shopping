@@ -8,7 +8,11 @@ import About from './components/static/About';
 import Contact from './components/static/Contact';
 import Review from './components/review/Review';
 import Products from './components/shopping/Products';
-
+import InvoiceComplete from './components/shopping/InvoiceComplete';
+import ShoppingCart from './components/shopping/ShoppingCart';
+import Search from './components/static/Search';
+import Login from './components/validation/Login';
+import Register from './components/validation/Register';
 
 function App() {
   return (
@@ -21,6 +25,11 @@ function App() {
         <Route path='/products' element={<Products/>}></Route>
         <Route path='/contact' element={<Contact/>}></Route>
         <Route path='/review' element={<Review/>}></Route>
+        <Route path='/invoice' element={<InvoiceComplete/>}></Route>
+        <Route path='/shoppingcart' element={<ShoppingCart/>}></Route>
+        <Route path='/search' element={<Search/>}></Route>
+        <Route path='/Login' element={<Login/>}></Route>
+        <Route path='/register' element={<Register/>}></Route>
       </Routes>
       <Footer/>
     </div>
