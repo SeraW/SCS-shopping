@@ -1,7 +1,10 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+$rest_json = file_get_contents("php://input");
+$_POST = json_decode($rest_json, true);
 session_start();
-?>
-<?php
 $db = mysqli_connect("localhost", "root", "", "project");
 if ($db->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -21,16 +24,13 @@ $result = $db->query("SELECT * FROM users WHERE login_id = '$username'");
 $num = mysqli_num_rows($result);
 
 if ($num == 1){
-    header("Location: ../register.php");
     $error = "Username Already Taken.";
-    $s = "INSERT into error(error_text) values ('$error')";
-    mysqli_query($db,$s);
-    mysqli_close($db);
+    echo json_encode(array("sent"=> false));
 }else{
     $_SESSION['username'] = $_POST['username'];
     $reg = "INSERT into users(first_name, last_name, phone, email, addy, postal, login_id, login_password, balance, admin_val) values ('$fname','$lname','$phone','$email','$addr','$postal','$username','$password', 0, false)";
     mysqli_query($db, $reg);
-    header("Location: ../home.php");
+    echo json_encode(array("sent"=> true));
 }
 mysqli_close($db);
 ?>
