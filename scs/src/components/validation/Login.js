@@ -1,9 +1,51 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {useNavigate} from 'react-router';
+import axios from 'axios';
 import '../../css/login.css';
 
 const Login = () => {
+  const [loginInfo, setLogin] = useState({});
+  const navigate = useNavigate();
+  const handleSubmit =  (e) => {
+    e.preventDefault();
+    setLogin({
+      username: e.target[0].value,
+      password: e.target[1].value
+    });
+    console.log(loginInfo)
+    axios({
+      method: 'post',
+      url: 'http://localhost/loginval.php',
+      headers: { 'content-type': 'application/json' },
+      data:loginInfo
+    })
+    .then(res =>{
+      console.log(res);
+      if (res.data.sent){
+        navigate('/');
+      }
+    }) .catch(err =>{ 
+      console.log(err);
+    })
+  }
   return (
-    <div></div>
+    <div>
+      <div id="login">
+        <div id="loginarea">
+            <h1>Sign <span>In</span></h1>
+            <form onSubmit={handleSubmit}>
+                <label for="username" style={{width:"90%"}}>Username</label>
+                <input id="username bar" type="text" name = "username" style={{width:"90%"}}  required/><br/>
+                <label for="password" style={{width:"90%"}}>Password</label>
+                <input id="password bar" type="password" name="password" style={{width:"90%"}}  required/><br/>
+                <span className="helper-text" data-error="wrong" data-success="right">Don't have an account? <a href="register.php"><u>Create an Account</u></a></span><br/>
+                <button className="btn waves-effect waves-light save-button" type="submit" name="signin" style={{margintop:"30px",background:"#149BBB"}}>Sign In
+                    <i className="material-icons right">send</i>
+                </button><br/>
+            </form>
+        </div>
+    </div>
+    </div>
   )
 }
 
