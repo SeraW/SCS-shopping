@@ -1,10 +1,26 @@
-import React, {useState} from 'react';
-import {useNavigate} from 'react-router';
+import React, {useState,useEffect} from 'react';
 import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
 import '../../css/login.css';
 
 const Login = () => {
   const [loginInfo, setLogin] = useState({});
+  useEffect(()=>{
+    axios({
+      method: 'post',
+      url: 'http://localhost/loginval.php',
+      headers: { 'content-type': 'application/json' },
+      data:loginInfo
+    })
+    .then(res =>{
+      console.log(res);
+      if (res.data.sent){
+        navigate('/')
+      }
+    }) .catch(err =>{ 
+      console.log(err);
+    })
+  },[loginInfo])
   const navigate = useNavigate();
   const handleSubmit =  (e) => {
     e.preventDefault();
@@ -22,7 +38,7 @@ const Login = () => {
     .then(res =>{
       console.log(res);
       if (res.data.sent){
-        navigate('/');
+        navigate('/')
       }
     }) .catch(err =>{ 
       console.log(err);
