@@ -15,7 +15,8 @@ const Login = () => {
     .then(res =>{
       console.log(res);
       if (res.data.sent){
-        navigate('/')
+        localStorage.setItem('username', res.data.session);
+        navigate('/');
       }
     }) .catch(err =>{ 
       console.log(err);
@@ -38,6 +39,7 @@ const Login = () => {
     .then(res =>{
       console.log(res);
       if (res.data.sent){
+        localStorage.setItem('username', res.data.session);
         navigate('/')
       }
     }) .catch(err =>{ 

@@ -1,10 +1,10 @@
 <?php
+
 header("Access-Control-Allow-Origin: *");
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 $rest_json = file_get_contents("php://input");
 $_POST = json_decode($rest_json, true);
-session_start();
 if (empty($_POST['username']) && empty($_POST['password'])) die();
 $db = mysqli_connect("localhost", "root", "", "project");
 if ($db->connect_error) {
@@ -24,10 +24,10 @@ $num = mysqli_num_rows($result);
 
 if ($num == 0){
     $error = "Invalid Username or Password.";
-    echo json_encode(array("sent"=> false));
+    echo json_encode(array("sent"=> false, "session" => ""));
 }else{
     $_SESSION['username'] = $_POST['username'];
-    echo json_encode(array("sent"=> true));
+    echo json_encode(array("sent"=> true, "session" => $_SESSION['username']));
 }
 mysqli_close($db);
 ?>

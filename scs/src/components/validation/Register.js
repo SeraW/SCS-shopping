@@ -15,12 +15,13 @@ const Register = () => {
     .then(res =>{
       console.log(res);
       if (res.data.sent){
+        localStorage.setItem('username', res.data.session);
         navigate('/')
       }
     }) .catch(err =>{ 
       console.log(err);
     })
-  },[regInfo])
+  })
   const navigate = useNavigate();
   const handleSubmit =  (e) => {
     e.preventDefault();
@@ -46,6 +47,7 @@ const Register = () => {
     .then(res =>{
       console.log(res);
       if (res.data.sent){
+        localStorage.setItem('username', res.data.session);
         navigate('/')
       }
     }) .catch(err =>{ 
