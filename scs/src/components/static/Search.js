@@ -46,14 +46,14 @@ const Search = () => {
         <form onSubmit={handleSubmit}>
             <label for="userid">User ID</label><br/>
             <input type="text" id="userid" name="userid" style={{color:"black"}}/><br/>
-            <button className="btn waves-effect waves-light track-button" type="submit" name="track" style={{margintop:"30px",background:"#149BBB"}}>Search
+            <button className="btn track-button" type="submit" name="track" style={{margintop:"30px",background:"#149BBB"}}>Search
                 <i className="material-icons right">send</i>
             </button><br/>
         </form>
         <form onSubmit={handleSubmit}>
             <label for="orderid">Order ID</label><br/>
             <input type="text" id="orderid" name="orderid" style={{color:"black"}}/><br/>
-            <button className="btn waves-effect waves-light track-button" type="submit" name="trackOrder" style={{margintop:"30px",background:"#149BBB"}}>Search
+            <button className="btn track-button" type="submit" name="trackOrder" style={{margintop:"30px",background:"#149BBB"}}>Search
                 <i className="material-icons right">send</i>
             </button><br/>
         </form>
