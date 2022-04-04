@@ -76,9 +76,9 @@ CREATE TABLE IF NOT EXISTS Messages (
 );
 
 INSERT INTO Users (first_name, last_name, phone, email, addy, postal, login_id, login_salt, login_password, balance, admin_val)
-VALUES ('Dave', 'Tran', '000-000-0000', 'dave.tran@gmail.com', '2598 Islington Ave', 'M8V3B6', 'davetran', 'coolguy', '9248827c50d7eb1a62e4e32665567326', 500.00, true),
-        ('Anthony', 'Tran', '000-000-0001', 'atran@gmail.com', '3395 Islington Ave', 'M8V3B6', 'atran', 'iplaygenshin', '3a0885cc026664d0a1d51b33776abe7d' , 500.00, true),
-        ('Sera', 'Wong', '000-000-0002', 'swong@gmail.com', '3090 Wellington Street', 'M9C3J5', 'swong', 'catscats', 'bdb2bd5c46e429c3de739e2dcf463b75', 500.00, true);
+VALUES ('Dave', 'Tran', '000-000-0000', 'dave.tran@gmail.com', '2598 Islington Ave', 'M8V3B6', 'davetran', 'vW4SJfvFJf9hkUCP', 'ffa4fb0d0044e3f0384d75e881fd5e1c', 500.00, true),
+        ('Anthony', 'Tran', '000-000-0001', 'atran@gmail.com', '3395 Islington Ave', 'M8V3B6', 'atran', '5EtA3f0orN4Ztwzf', 'fe6b3f9b3c01b91d3278d241f833e7eb' , 500.00, true),
+        ('Sera', 'Wong', '000-000-0002', 'swong@gmail.com', '3090 Wellington Street', 'M9C3J5', 'swong', 'b3/5KyIPaFMEfMyB', '86c9a1badb4cd57b4ee58884baf9e1f7', 500.00, true);
 
 
 INSERT INTO Review (review_text, user_id)

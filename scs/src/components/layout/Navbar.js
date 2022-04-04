@@ -79,7 +79,7 @@ const Navbar = () => {
             {status && status.map((tab, id) =>{
               if (tab == "Admin"){
                 return (
-                  <li key = {id}><a className='dropdown-trigger' data-target='dropdown'>Admin<i className='material-icons right'>arrow_drop_down</i></a></li>
+                  <li key = {id}><Link to="/admin"><a>Admin</a></Link></li>
                 );
               } else if (tab == "Logout"){
                 return (
@@ -112,7 +112,7 @@ const Navbar = () => {
         {status && status.map((tab, id) =>{
               if (tab == "Admin"){
                 return (
-                  <li key = {id}><a className='dropdown-trigger' data-target='dropdown'>Admin<i className='material-icons right'>arrow_drop_down</i></a></li>
+                  <li key = {id}><Link to="/admin"><a>Admin</a></Link></li>
                 );
               } else if (tab == "Logout"){
                 return (

@@ -13,7 +13,8 @@ import ShoppingCart from './components/shopping/ShoppingCart';
 import Search from './components/static/Search';
 import Login from './components/validation/Login';
 import Register from './components/validation/Register';
-import Select from './components/admin/select'
+import Select from './components/admin/select';
+import Admin from './components/admin/admin';
 
 function App() {
   return (
@@ -29,9 +30,10 @@ function App() {
         <Route path='/invoice' element={<InvoiceComplete/>}></Route>
         <Route path='/shoppingcart' element={<ShoppingCart/>}></Route>
         <Route path='/search' element={<Search/>}></Route>
-        <Route path='/Login' element={<Login/>}></Route>
+        <Route path='/login' element={<Login/>}></Route>
         <Route path='/register' element={<Register/>}></Route>
         <Route path='/select' element={<Select/>}></Route>
+        <Route path='/admin' element={<Admin/>}></Route>
       </Routes>
       <Footer/>
     </div>
