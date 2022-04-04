@@ -1,5 +1,7 @@
 <?php
-
+function generateRandomSalt(){
+    return base64_encode(random_bytes(12));
+}
 header("Access-Control-Allow-Origin: *");
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
@@ -17,6 +19,17 @@ if ($db->connect_error) {
 $username = $_POST["username"];
 $password = $_POST["password"];
 
+$result = $db -> query("SELECT login_salt FROM users WHERE login_id = '$username'");
+
+$num = mysqli_num_rows($result);
+$row = mysqli_fetch_row($result);
+if ($num == 0){
+    $error = "Invalid Username or Password.";
+    echo json_encode(array("sent"=> false, "session" => ""));
+}else{
+    $salt = $row[0];
+    $password = md5($password.$salt);
+}
 
 $result = $db->query("SELECT * FROM users WHERE login_id = '$username' AND login_password = '$password'");
 

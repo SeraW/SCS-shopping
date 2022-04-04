@@ -1,0 +1,8 @@
+DROP TABLE Orders;
+DROP TABLE Trip;
+DROP TABLE Car;
+DROP TABLE Review;
+DROP TABLE Shopping;
+DROP TABLE Users;
+DROP TABLE Branch;
+DROP TABLE Product;
