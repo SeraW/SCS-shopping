@@ -70,7 +70,7 @@ const Navbar = () => {
         <div className="nav-wrapper">
           <Link to="/"><a className="brand-logo">S<span className="material-icons black-icons" id="globe">travel_explore</span>S</a></Link>
           <a href="" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons" id="hamburger">menu</i></a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li><Link to="/"><a>Home</a></Link></li>
             <li><Link to="/about"><a>About</a></Link></li>
             <li><Link to="/products"><a>Products</a></Link></li>

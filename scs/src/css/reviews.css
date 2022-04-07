@@ -15,21 +15,17 @@ body{
     color:#393D3F;
 }
 
-/* h1 {
-    font-size: 3rem !important;
-    text-align: center !important;
-    font-weight: 800 !important;
-}
-
-h2{
+#description{
     font-size: 1rem !important;
     text-align: center !important;
-} */
-
+}
 
 #title h1{
     margin-bottom: 0 !important;
     margin-top: 90px !important;
+    font-size: 3rem !important;
+    text-align: center !important;
+    font-weight: 800 !important;
     
 }
 
@@ -95,15 +91,19 @@ textarea.materialize-textarea {
 
 @media only screen and (max-width:400px){
     .card-content{
-        width: 100vw; 
+        width: 90vw;
     }
     .carousel-item {
-        transform: none !important;
-        width: 100vw !important;
+        width: 80vw !important;
     }
 
     .card-action {
-        width: 100vw !important;
+        width: 90vw !important;
+    }
+
+    .carousel .carousel-item {
+        width: 90vw !important;
+        height: 300px !important;
     }
      
 }

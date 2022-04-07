@@ -17,28 +17,30 @@ const Select = () => {
         document.getElementById("colname").innerHTML = insert;
       }
     },[tableData])
-    
+
     const handleSubmit =  (e) => {
       e.preventDefault();
-      axios({
-        method: 'post',
-        url: 'http://localhost/select.php',
-        headers: { 'content-type': 'application/json' },
-        data:tables
-      })
-      .then(res =>{
-        setTableData(res.data);
-      }) .catch(err =>{ 
-        console.log(err);
-      })
+      if (tables != ""){
+        axios({
+          method: 'post',
+          url: 'http://localhost/select.php',
+          headers: { 'content-type': 'application/json' },
+          data:tables
+        })
+        .then(res =>{
+          setTableData(res.data);
+        }) .catch(err =>{ 
+          console.log(err);
+        })
+      }
     }
     return (
       <div>
         <div id="insertheight-div">
           <div className="container">
               <div className="row">
-                  <h1>Database <span className="highlight">Administration</span></h1>
-                  <h2>Select data below</h2>
+                  <h1 id="title">Database <span className="highlight">Administration</span></h1>
+                  <h2 id="title2">Select data below</h2>
               </div>
               <div className="row table_select">
               <form onSubmit={handleSubmit}>

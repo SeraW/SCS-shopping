@@ -41,7 +41,6 @@ body{
 
 #home #home-info{
     width: 50%;
-    text-align:center; 
 }
 
 #home #home-info h1{
@@ -95,7 +94,6 @@ body{
     justify-content: center;
     align-items: center;
     margin-bottom: 60px;
-    text-align:center; 
 }
 
 #contact-sec #contact-area{
