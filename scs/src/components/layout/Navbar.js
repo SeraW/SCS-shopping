@@ -30,7 +30,6 @@ const Navbar = () => {
   useEffect(()=>{
     if (localStorage.getItem('username')){
       setUsername(localStorage.getItem('username'));
-      console.log(localStorage.getItem('username'));
     }
     axios({
       method: 'post',
@@ -54,18 +53,6 @@ const Navbar = () => {
 
   return (
     <div>
-      <ul id="dropdown" className="dropdown-content">
-        <li><Link to="/"><a>Insert</a></Link></li>
-        <li><Link to="/"><a>Delete</a></Link></li>
-        <li><Link to="/"><a>Select</a></Link></li>
-        <li><Link to="/"><a>Update</a></Link></li>
-      </ul>
-      <ul id="mobiledrop" className="dropdown-content">
-        <li><Link to="/"><a>Insert</a></Link></li>
-        <li><Link to="/"><a>Delete</a></Link></li>
-        <li><Link to="/"><a>Select</a></Link></li>
-        <li><Link to="/"><a>Update</a></Link></li>
-      </ul>
       <nav className="z-depth-0">
         <div className="nav-wrapper">
           <Link to="/"><a className="brand-logo">S<span className="material-icons black-icons" id="globe">travel_explore</span>S</a></Link>

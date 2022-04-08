@@ -6,21 +6,23 @@ import '../../css/login.css';
 const Login = () => {
   const [loginInfo, setLogin] = useState({});
   useEffect(()=>{
-    axios({
-      method: 'post',
-      url: 'http://localhost/loginval.php',
-      headers: { 'content-type': 'application/json' },
-      data:loginInfo
-    })
-    .then(res =>{
-      console.log(res);
-      if (res.data.sent){
-        localStorage.setItem('username', res.data.session);
-        navigate('/');
-      }
-    }) .catch(err =>{ 
-      console.log(err);
-    })
+    if (loginInfo !== {}){
+      axios({
+        method: 'post',
+        url: 'http://localhost/loginval.php',
+        headers: { 'content-type': 'application/json' },
+        data:loginInfo
+      })
+      .then(res =>{
+        console.log(res);
+        if (res.data.sent){
+          localStorage.setItem('username', res.data.session);
+          navigate('/');
+        }
+      }) .catch(err =>{ 
+        console.log(err);
+      })
+    }
   },[loginInfo])
   const navigate = useNavigate();
   const handleSubmit =  (e) => {
