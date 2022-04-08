@@ -6,6 +6,7 @@ import '../../css/register.css';
 const Register = () => {
   const [regInfo, setReg] = useState({});
   useEffect(()=>{
+    if (regInfo !== {}){
     axios({
       method: 'post',
       url: 'http://localhost/signup.php',
@@ -20,7 +21,7 @@ const Register = () => {
       }
     }) .catch(err =>{ 
       console.log(err);
-    })
+    }) }
   })
   const navigate = useNavigate();
   const handleSubmit =  (e) => {
