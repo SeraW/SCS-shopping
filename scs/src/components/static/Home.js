@@ -9,6 +9,7 @@ const Home = () => {
   return (
     <div>
       <div id="searchcontainer">
+        <p style={{color:"#FDFDFF", fontWeight:"600", textAlign:"center", background:"#149BBB"}}>15% Off Sale Storewide!</p>
         <a className="searchbtn" href="/search" ><i className="material-icons" style={{color:"#393D3F"}}>search</i></a>
       </div>
       <div id="home">
