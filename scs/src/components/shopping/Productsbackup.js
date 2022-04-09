@@ -4,19 +4,28 @@ import blender from "../../img/products/blender.png";
 
 import axios from "axios";
 
-const LOCAL_STORAGE_KEY = 'product.cart'
+const LOCAL_STORAGE_KEY = "product.cart";
 
 const Products = () => {
   const [tableData, setTableData] = useState([]);
+
+  let strCookie = getCookie("cart");
+  let cart = [];
+  let cartCount = cart.length;
+  if (strCookie != null) {
+    cart = JSON.parse(strCookie);
+    cartCount = cart.length;
+  }
+  
+  let jsonCart = JSON.stringify(cart);
 
   useEffect(() => {
     handleSubmit();
   }, []);
 
   useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tableData))
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tableData));
   }, [tableData]);
-
 
   function handleSubmit() {
     axios({
@@ -33,12 +42,55 @@ const Products = () => {
       });
   }
 
-  function cartBtn(id) {
-
-    console.log(id)
-
+  function cartBtn(ev) {
+    console.log(ev);
+    var img = document.getElementById(`img${ev}`).src;
+    var productName = document.getElementById(`name${ev}`).textContent;
+    var productCost = document.getElementById(`price${ev}`).textContent;
+    cartCount += 1;
+    shoppingCart(ev);
+    var html = `<div class="card horizontal" id="card${cartCount}">
+                    <div class="card-image cart-img">
+                        <img class="cartimg" src="${img}">
+                    </div>
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <span class="cardspan" style="color:black; font-weight:bold" class="card-title">${productName}</span>
+                            <p>${productCost}</p>
+                        </div>
+                        <div class="card-action">
+                            <a id="remove${cartCount}" href="javascript:void(0);" onclick="removeCart(${cartCount});" style="color:#149BBB"><i class="material-icons">delete</i></a>
+                        </div>
+                    </div>
+                </div>`;
+    document.querySelector("#div1").insertAdjacentHTML("beforeend", html);
+    jsonCart = JSON.stringify(cart);
+    WriteCookie();
+  }
+  function shoppingCart(value) {
+    cart.push(value);
   }
 
+  function WriteCookie() {
+    //cookievalue = escape(document.myform.customer.value) + ";";
+    document.cookie = "cart=" + jsonCart;
+  }
+
+  function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
   return (
     <div>
       <div class="row">
