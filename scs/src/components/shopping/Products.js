@@ -4,21 +4,24 @@ import blender from "../../img/products/blender.png";
 
 import axios from "axios";
 
-const LOCAL_STORAGE_KEY = 'product.cart'
-
 const Products = () => {
   const [tableData, setTableData] = useState([]);
+  const [cart, setCart] = useState([]);
+  const LOCAL_STORAGE_KEY = "cart";
+
+  console.log(cart);
 
   useEffect(() => {
-    handleSubmit();
+    generateProducts();
+    const storedCart = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    if (storedCart) setCart(storedCart);
   }, []);
 
   useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tableData))
-  }, [tableData]);
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(cart));
+  }, [cart]);
 
-
-  function handleSubmit() {
+  function generateProducts() {
     axios({
       method: "post",
       url: "http://localhost/select.php",
@@ -34,9 +37,8 @@ const Products = () => {
   }
 
   function cartBtn(id) {
-
-    console.log(id)
-
+    setCart((oldCart) => [...oldCart, id]);
+    console.log(id);
   }
 
   return (
@@ -45,8 +47,10 @@ const Products = () => {
         <div class="col s12 m12 l8">
           <h1>Products</h1>
           <div id="productlist">
+
+            {console.log(tableData)}
+
             {tableData.map((item, tableindex) => {
-              console.log("GGGGGGGGGG");
               const tableCol = Object.keys(tableData[0]);
               const counter = tableData[tableindex][tableCol[0]];
               const name = tableData[tableindex][tableCol[1]];
@@ -82,15 +86,36 @@ const Products = () => {
             })}
           </div>
         </div>
+
         <div class="col s12 m12 l4" id="full">
           <div id="div1">
             <h1>Cart</h1>
             <form name="myform">
               <input type="hidden" name="customer" />
             </form>
+            {
+             // cart.map((item, productindex) => {
+                cart.map((item) => {
+
+              const counter = tableData[item-1]["prod_id"];
+              //const name = tableData[item-1]["prod_name"];
+              //const price = tableData[item-1]["prod_price"];
+              //const imgurl = tableData[item-1]["img_url"];
+
+              const name = "name";
+              const price = "price";
+              const imgurl = "img";
+
+
+              //I'VE GOT NO CLUE HOW TO MAKE THE LINE BELOW NOT HARDCODED
+              const img = "http://localhost/CPS630/scs/src/" + imgurl;
+              return (
+
+
+
             <div class="card horizontal" id="card' . $counter . '">
               <div class="card-image cart-img">
-                <img class="cartimg" src={blender} />
+                <img class="cartimg" src={img} />
               </div>
               <div class="card-stacked">
                 <div class="card-content">
@@ -98,9 +123,9 @@ const Products = () => {
                     class="cardspan card-title"
                     style={{ color: "black", fontWeight: "bold" }}
                   >
-                    Blender
+                    {name}
                   </span>
-                  <p>$4.99</p>
+                  <p>${price}</p>
                 </div>
                 <div class="card-action">
                   <a
@@ -113,6 +138,11 @@ const Products = () => {
                 </div>
               </div>
             </div>
+
+          );
+          })}
+
+
           </div>
         </div>
       </div>
