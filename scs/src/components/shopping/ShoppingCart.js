@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../../css/shoppingcart.css";
 import axios from "axios";
+import { GoogleMap, LoadScript, DirectionsRenderer } from "@react-google-maps/api";
 
 const ShoppingCart = () => {
   const [tableData, setTableData] = useState([]);
@@ -8,13 +9,15 @@ const ShoppingCart = () => {
   const [isLoading, setLoading] = useState(true);
   const LOCAL_STORAGE_KEY = "cart";
 
-  
+  const containerStyle = {
+    width: "500px",
+    height: "500px",
+  };
 
-  
-  
-
-
-  
+  const center = {
+    lat: 43.65,
+    lng: -79.38,
+  };
 
   var cartCount = 0;
 
@@ -56,15 +59,20 @@ const ShoppingCart = () => {
         <div class="container">
           <div class="col s12 m12 l9">
             <h1>Checkout</h1>
-            
-
-
-            
+            <LoadScript googleMapsApiKey="AIzaSyDf5iT2KI8tPal0EAflGoI2WNfnXXp3nHc">
+              <GoogleMap
+                mapContainerStyle={containerStyle}
+                center={center}
+                zoom={10}
+              >
+                {/* Child components, such as markers, info windows, etc. */}
+                <></>
+              </GoogleMap>
+            </LoadScript>
           </div>
         </div>
       </div>
     </div>
   );
 };
-
-export default ShoppingCart;
+export default React.memo(ShoppingCart);
