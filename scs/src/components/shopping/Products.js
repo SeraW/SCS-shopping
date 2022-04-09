@@ -7,7 +7,9 @@ import axios from "axios";
 const Products = () => {
   const [tableData, setTableData] = useState([]);
   const [cart, setCart] = useState([]);
+  //  const [cart, setCart] = useState([1,2,3]);  if u initialize it with default values its the same problem, it fucks
   const LOCAL_STORAGE_KEY = "cart";
+  var cartCount = 0;
 
   console.log(cart);
 
@@ -26,7 +28,7 @@ const Products = () => {
       method: "post",
       url: "http://localhost/select.php",
       headers: { "content-type": "application/json" },
-      data: "product", //tables
+      data: "product",
     })
       .then((res) => {
         setTableData(res.data);
@@ -38,7 +40,13 @@ const Products = () => {
 
   function cartBtn(id) {
     setCart((oldCart) => [...oldCart, id]);
-    console.log(id);
+  }
+
+  function removeCart(id) {
+    let str = id.target.id;
+    let removeTarget = str.substring(str.length - 1);
+    const newCart = cart.filter((ele, i) => i != removeTarget - 1);
+    setCart(newCart);
   }
 
   return (
@@ -47,7 +55,6 @@ const Products = () => {
         <div class="col s12 m12 l8">
           <h1>Products</h1>
           <div id="productlist">
-
             {console.log(tableData)}
 
             {tableData.map((item, tableindex) => {
@@ -94,51 +101,47 @@ const Products = () => {
               <input type="hidden" name="customer" />
             </form>
             {
-             // cart.map((item, productindex) => {
-                cart.map((item) => {
+              // cart.map((item, productindex) => {
+              cart.map((item) => {
+                const counter = tableData[item - 1]["prod_id"];
+                cartCount++;
+                const name = tableData[item - 1]["prod_name"];
+                const price = tableData[item - 1]["prod_price"];
+                const imgurl = tableData[item - 1]["img_url"];
 
-              const counter = tableData[item-1]["prod_id"];
-              const name = tableData[item-1]["prod_name"];
-              const price = tableData[item-1]["prod_price"];
-              const imgurl = tableData[item-1]["img_url"];
-
-
-              //I'VE GOT NO CLUE HOW TO MAKE THE LINE BELOW NOT HARDCODED
-              const img = "http://localhost/CPS630/scs/src/" + imgurl;
-              return (
-
-
-
-            <div class="card horizontal" id="card' . $counter . '">
-              <div class="card-image cart-img">
-                <img class="cartimg" src={img} />
-              </div>
-              <div class="card-stacked">
-                <div class="card-content">
-                  <span
-                    class="cardspan card-title"
-                    style={{ color: "black", fontWeight: "bold" }}
-                  >
-                    {name}
-                  </span>
-                  <p>${price}</p>
-                </div>
-                <div class="card-action">
-                  <a
-                    href="javascript:void(0);"
-                    id="remove' . $counter . '"
-                    onclick="removeCart(' . $counter . ');"
-                  >
-                    <i class="material-icons">delete</i>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-          );
-          })}
-
-
+                //I'VE GOT NO CLUE HOW TO MAKE THE LINE BELOW NOT HARDCODED
+                const img = "http://localhost/CPS630/scs/src/" + imgurl;
+                return (
+                  <div class="card horizontal" id={"card" + cartCount}>
+                    <div class="card-image cart-img">
+                      <img class="cartimg" src={img} />
+                    </div>
+                    <div class="card-stacked">
+                      <div class="card-content">
+                        <span
+                          class="cardspan card-title"
+                          style={{ color: "black", fontWeight: "bold" }}
+                        >
+                          {name}
+                        </span>
+                        <p>${price}</p>
+                      </div>
+                      <div class="card-action">
+                        <a
+                          href="javascript:void(0);"
+                          id={"remove" + cartCount}
+                          onClick={(e) => removeCart(e)}
+                        >
+                          <i id={"removes" + cartCount} class="material-icons">
+                            delete
+                          </i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })
+            }
           </div>
         </div>
       </div>
@@ -147,4 +150,3 @@ const Products = () => {
 };
 
 export default Products;
-  
