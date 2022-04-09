@@ -98,13 +98,9 @@ const Products = () => {
                 cart.map((item) => {
 
               const counter = tableData[item-1]["prod_id"];
-              //const name = tableData[item-1]["prod_name"];
-              //const price = tableData[item-1]["prod_price"];
-              //const imgurl = tableData[item-1]["img_url"];
-
-              const name = "name";
-              const price = "price";
-              const imgurl = "img";
+              const name = tableData[item-1]["prod_name"];
+              const price = tableData[item-1]["prod_price"];
+              const imgurl = tableData[item-1]["img_url"];
 
 
               //I'VE GOT NO CLUE HOW TO MAKE THE LINE BELOW NOT HARDCODED
@@ -151,3 +147,4 @@ const Products = () => {
 };
 
 export default Products;
+  
