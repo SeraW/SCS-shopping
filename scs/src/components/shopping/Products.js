@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "../../css/products.css";
-import blender from "../../img/products/blender.png";
-
 import axios from "axios";
 
 const Products = () => {
