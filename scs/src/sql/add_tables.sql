@@ -19,6 +19,14 @@ CREATE TABLE IF NOT EXISTS Review (
     user_id INT REFERENCES Users(user_id) ON DELETE CASCADE
 );
 
+CREATE TABLE IF NOT EXISTS Review_Products (
+    Preview_id INT PRIMARY KEY AUTO_INCREMENT,
+    Preview_text VARCHAR(500),
+    Preview_rate INT,
+    prod_id INT REFERENCES Product(prod_id) ON DELETE CASCADE,
+    user_id INT REFERENCES Users(user_id) ON DELETE CASCADE
+);
+
 
 CREATE TABLE IF NOT EXISTS Branch (
     branch_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -78,7 +86,10 @@ CREATE TABLE IF NOT EXISTS Messages (
 INSERT INTO Users (first_name, last_name, phone, email, addy, postal, login_id, login_salt, login_password, balance, admin_val)
 VALUES ('Dave', 'Tran', '000-000-0000', 'dave.tran@gmail.com', '2598 Islington Ave', 'M8V3B6', 'davetran', 'vW4SJfvFJf9hkUCP', 'ffa4fb0d0044e3f0384d75e881fd5e1c', 500.00, true),
         ('Anthony', 'Tran', '000-000-0001', 'atran@gmail.com', '3395 Islington Ave', 'M8V3B6', 'atran', '5EtA3f0orN4Ztwzf', 'fe6b3f9b3c01b91d3278d241f833e7eb' , 500.00, true),
-        ('Sera', 'Wong', '000-000-0002', 'swong@gmail.com', '3090 Wellington Street', 'M9C3J5', 'swong', 'b3/5KyIPaFMEfMyB', '86c9a1badb4cd57b4ee58884baf9e1f7', 500.00, true);
+        ('Sera', 'Wong', '000-000-0002', 'swong@gmail.com', '3090 Wellington Street', 'M9C3J5', 'swong', 'b3/5KyIPaFMEfMyB', '86c9a1badb4cd57b4ee58884baf9e1f7', 500.00, true),
+        ('Nanamin', 'Kento', '000-000-0003','nkento@gmail.com','4361 Yonge Street','M4W1J7','nkento','bHxMoqO6o6rihwuO','ffefb6e0063e8d342cfab1ab4ebcef1c',700.00, false),
+        ('Seto', 'Kaiba', '000-000-0004', 'skaiba@gmail.com', '2514 Merton Street', 'M1L3K7', 'skaiba', 'AhOdbwsf6BcKF6kx', 'cbf720f7a3d7943c02af71e495143791', 500.00, false),
+        ('Yae', 'Miko', '000-000-0005', 'ymiko@gmail.com', '1522 Adelaide St', 'M5H1P6', 'ymiko', 'j+BAsC+TjHCl9Vlt','6fedbd16b189161705dbfdf61a489837', 900.50, false);
 
 
 INSERT INTO Review (review_text, user_id)
@@ -86,6 +97,16 @@ VALUES ('I am happy with the service I received. I ordered a smartphone and rece
         ('I ordered one thing and received something completely different, I''m not mad though', 0005),
         ('This place is better than KaibaCorp. 5/5 stars', 0004),
         ('I enjoy being able to shop to my needs while also being able to help the environment at the same time.', 0006);
+
+
+INSERT INTO review_products(Preview_text, Preview_rate, prod_id, user_id) 
+VALUES ('I enjoyed the blender', 4, 7, 1),
+        ('Fast delivery and works well', 5, 7, 2),
+        ('Blends well I like it', 5, 7, 3),
+        ('Blender broke within 2 weeks of getting it. I would rate 0 stars if I could', 1, 7, 4),
+        ('I enjoyed the waffle maker', 5, 6, 5);
+
+         
 
 INSERT INTO Branch (branch_addy, lat, lon)
 VALUES ('Ryerson University', 43.657374, -79.378804),

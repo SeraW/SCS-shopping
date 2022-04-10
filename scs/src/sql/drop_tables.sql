@@ -6,3 +6,4 @@ DROP TABLE Shopping;
 DROP TABLE Users;
 DROP TABLE Branch;
 DROP TABLE Product;
+DROP TABLE Review_Products;
