@@ -17,21 +17,29 @@ const ExampleDirectionsPropTypes = {
 };
 
 const ShoppingCart = () => {
-  const [tableData, setTableData] = useState([]);
+  const [product, setProduct] = useState([]);
   const [cart, setCart] = useState([]);
   const [isLoading, setLoading] = useState(true);
-  const [branch, setBranch] = useState([]);
+  //const [branch, setBranch] = useState([]);
+
+  const [date, setDate] = useState("");
+  const [price, setPrice] = useState("");
+  const [branch, setBranch] = useState("");
+  const [address, setAddress] = useState("");
+  const [car, setCar] = useState("");
+  const [orderID, setOrderID] = useState("");
+
   const LOCAL_STORAGE_KEY = "cart";
   var cartCount = 0;
   var total = 0;
-  console.log(cart);
+  //console.log(cart);
 
   const [response, setResponse] = React.useState(null);
   const [origin, setOrigin] = React.useState("129 Firgrove Cres.");
   const [destination, setDestination] = React.useState("Jane Finch Mall");
 
   const containerStyle = {
-    width: "500px",
+    width: "100%",
     height: "500px",
   };
 
@@ -94,37 +102,21 @@ const ShoppingCart = () => {
   function generateProducts() {
     axios({
       method: "post",
-      url: "http://localhost/select.php",
+      url: "http://localhost/test.php",
       headers: { "content-type": "application/json" },
-      data: "product",
     })
       .then((res) => {
-        setTableData(res.data);
+        console.log(res.data);
+        setProduct(res.data.product);
+        setAddress(res.data.address);
+        setBranch(res.data.branch);
+        setCar(res.data.car);
         setLoading(false);
       })
       .catch((err) => {
         console.log(err);
       });
-
-    axios({
-      method: "post",
-      url: "http://localhost/select.php",
-      headers: { "content-type": "application/json" },
-      data: "branch",
-    })
-      .then((res) => {
-        setBranch(res.data);
-        console.log("branch")
-        
-        console.log(branch)
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
   }
-
 
   return (
     <div>
@@ -135,77 +127,85 @@ const ShoppingCart = () => {
             <button className="btn btn-primary" type="button" onClick={onClick}>
               Build Route
             </button>
+            <div id="mapdiv" class="col s12 m12 l9">
+              <div id="map">
+                <LoadScript googleMapsApiKey="AIzaSyDf5iT2KI8tPal0EAflGoI2WNfnXXp3nHc">
+                  <GoogleMap
+                    id="direction-example"
+                    mapContainerStyle={containerStyle}
+                    zoom={2}
+                    center={center}
+                    onClick={onMapClick}
+                  >
+                    {destination !== "" && origin !== "" && (
+                      <DirectionsService
+                        options={{
+                          destination: destination,
+                          origin,
+                          travelMode: "DRIVING",
+                        }}
+                        callback={directionsCallback}
+                      />
+                    )}
 
-            <LoadScript googleMapsApiKey="AIzaSyDf5iT2KI8tPal0EAflGoI2WNfnXXp3nHc">
-              <GoogleMap
-                id="direction-example"
-                mapContainerStyle={containerStyle}
-                zoom={2}
-                center={center}
-                onClick={onMapClick}
-              >
-                {destination !== "" && origin !== "" && (
-                  <DirectionsService
-                    options={{
-                      destination: destination,
-                      origin,
-                      travelMode: "DRIVING",
-                    }}
-                    callback={directionsCallback}
-                  />
-                )}
-
-                {response !== null && (
-                  <DirectionsRenderer options={{ directions: response }} />
-                )}
-              </GoogleMap>
-            </LoadScript>
+                    {response !== null && (
+                      <DirectionsRenderer options={{ directions: response }} />
+                    )}
+                  </GoogleMap>
+                </LoadScript>
+              </div>
+            </div>
 
             <form id="order" action="process_order.php" method="post">
               <div class="input-field col s12">
-                <select name="end" id="end" required>
-                  <option value="" disabled selected="">
+                <select
+                  className="browser-default choice"
+                  id="end"
+                  name="end"
+                  required
+                >
+                  <option disabled selected>
                     Choose a Branch
                   </option>
-                  {/*                     <?php
-                    $commandText = "SELECT branch_addy FROM branch";
-                    $result = mysqli_query($db, $commandText);
 
-                    //$counter = 0;
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        //$counter += 1;
-                        $branch_addy = $row["branch_addy"];
-                        echo '<option value="' . $branch_addy . '">' . $branch_addy . '</option>';
-                    };
-                    ?> */}
+                  {branch.map((item) => {
+                    return (
+                      <option value={item["branch_addy"]}>
+                        {item["branch_addy"]}
+                      </option>
+                    );
+                  })}
                 </select>
               </div>
+
               <div class="input-field col s12">
-                <select name="car" id="car" required>
-                  <option value="" disabled selected="">
+                <select
+                  className="browser-default choice"
+                  name="car"
+                  id="car"
+                  required
+                >
+                  <option value="" disabled selected>
                     Choose a Car
                   </option>
-                  {/*                     <?php
-                    $commandText = "SELECT model, availibility, car_id FROM car";
-                    $result = mysqli_query($db, $commandText);
 
-                    //$counter = 0;
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        //$counter += 1;
-                        $model = $row["model"];
-                        $available = $row["availibility"];
-                        $car_id = $row["car_id"];
-                        if ($available == "Available") {
-                            echo '<option value="' . $car_id . '">' . $model . ' - (' . $available . ')</option>';
-                        }
-                    };
-                    ?>
- */}
+                  {car.map((item) => {
+                    return (
+                      <option value={item["model"]}>
+                        {item["model"] + " - Available"}
+                      </option>
+                    );
+                  })}
                 </select>
               </div>
               <div class="input-field col s12">
-                <select name="date" id="date" required>
-                  <option value="" disabled selected="">
+                <select
+                  className="browser-default choice"
+                  name="date"
+                  id="date"
+                  required
+                >
+                  <option value="" disabled selected>
                     Choose a Delivery Option
                   </option>
                   <option value="7">FREE - No-Rush Shipping</option>
@@ -248,8 +248,8 @@ const ShoppingCart = () => {
                       Summary
                     </span>
                     {cart.map((item) => {
-                      //const counter = tableData[item - 1]["prod_id"];
-                      const price = tableData[item - 1]["prod_price"];
+                      //const counter = product[item - 1]["prod_id"];
+                      const price = product[item - 1]["prod_price"];
                       total += parseFloat(price);
                     })}
 
@@ -264,11 +264,11 @@ const ShoppingCart = () => {
                 </div>
               </div>
               {cart.map((item) => {
-                //const counter = tableData[item - 1]["prod_id"];
+                //const counter = product[item - 1]["prod_id"];
                 cartCount++;
-                const name = tableData[item - 1]["prod_name"];
-                const price = tableData[item - 1]["prod_price"];
-                const imgurl = tableData[item - 1]["img_url"];
+                const name = product[item - 1]["prod_name"];
+                const price = product[item - 1]["prod_price"];
+                const imgurl = product[item - 1]["img_url"];
 
                 //I'VE GOT NO CLUE HOW TO MAKE THE LINE BELOW NOT HARDCODED
                 const img = "http://localhost/CPS630/scs/src/" + imgurl;

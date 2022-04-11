@@ -57,6 +57,10 @@ body {
   margin-bottom: 50px;
 }
 
+.input-field{
+  margin-top: 1vh !important;
+}
+
 @media only screen and (max-width: 1600px) {
   .card.horizontal .card-image{
     display: none;
