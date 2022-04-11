@@ -1,5 +1,5 @@
-import * as React from "React";
-import { useState, useEffect } from "React";
+import * as React from "react";
+import { useState, useEffect } from "react";
 import "../../css/shoppingcart.css";
 import axios from "axios";
 
