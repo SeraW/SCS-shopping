@@ -20,20 +20,15 @@ const ShoppingCart = () => {
   const [product, setProduct] = useState([]);
   const [cart, setCart] = useState([]);
   const [isLoading, setLoading] = useState(true);
-
+  const [response, setResponse] = React.useState(null);
+  const [origin, setOrigin] = React.useState(null);
+  const [destination, setDestination] = React.useState(null);
   const [branch, setBranch] = useState("");
-  //const [address, setAddress] = useState("");
-  let address = "";
   const [car, setCar] = useState("");
 
   const LOCAL_STORAGE_KEY = "cart";
   var cartCount = 0;
   var total = 0;
-  //console.log(cart);
-  //console.log(address);
-  const [response, setResponse] = React.useState(null);
-  const [origin, setOrigin] = React.useState(null);
-  const [destination, setDestination] = React.useState(null);
 
   const containerStyle = {
     width: "100%",
@@ -95,9 +90,6 @@ const ShoppingCart = () => {
         <div class="container">
           <div class="col s12 m12 l9">
             <h1>Checkout</h1>
-            <button className="btn btn-primary" type="button">
-              Build Route
-            </button>
             <div id="mapdiv" class="col s12 m12 l9">
               <div id="map">
                 <LoadScript googleMapsApiKey="AIzaSyDf5iT2KI8tPal0EAflGoI2WNfnXXp3nHc">
@@ -132,12 +124,6 @@ const ShoppingCart = () => {
                 onChange={(e) => {
                   const selectedTable = e.target.value;
                   setDestination(selectedTable);
-
-                  console.log(address);
-
-                  //console.log("THE HIT")
-                  //console.log(selectedTable)
-                  //console.log(destination)
                 }}
               >
                 <select
@@ -205,7 +191,6 @@ const ShoppingCart = () => {
                 class="btn waves-effect waves-light save-button"
                 type="submit"
                 name="trip_submit"
-                //style="margin-top:30px;background:#149BBB"
                 style={{ marginTop: "30px", background: "#149BBB" }}
               >
                 Place Order
@@ -223,14 +208,12 @@ const ShoppingCart = () => {
                 <div class="card-stacked">
                   <div class="card-content">
                     <span
-                      //style="color:black; font-weight:bold; font-size: 175%"
                       style={{ color: "black", fontWeight: "bold" }}
                       class="card-title"
                     >
                       Summary
                     </span>
                     {cart.map((item) => {
-                      //const counter = product[item - 1]["prod_id"];
                       const price = product[item - 1]["prod_price"];
                       total += parseFloat(price);
                     })}
@@ -241,12 +224,11 @@ const ShoppingCart = () => {
                     {/*               <p id="shipping">Shipping & Handling: $0</p>
                   <p>Taxes: $' . number_format((float)$total * .13, 2, '.', '') . '</p>
                   <p id="total">TOTAL: $' . number_format((float)$total * 1.13, 2, '.', '') . '</p>
- */}
+                  */}
                   </div>
                 </div>
               </div>
               {cart.map((item) => {
-                //const counter = product[item - 1]["prod_id"];
                 cartCount++;
                 const name = product[item - 1]["prod_name"];
                 const price = product[item - 1]["prod_price"];
@@ -279,7 +261,6 @@ const ShoppingCart = () => {
         </div>
       </div>
     </div>
-    //</div>
   );
 };
 
