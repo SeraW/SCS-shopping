@@ -28,6 +28,7 @@ const ShoppingCart = () => {
   const [car, setCar] = useState("");
   const [submitPurchase, setSubmitPurchase] = useState([]);
   const [shippingCost, setShipping] = useState(0);
+  const [purchaseData, setPurchasedData] = useState([]);
 
   const LOCAL_STORAGE_KEY = "cart";
   var cartCount = 0;
@@ -56,6 +57,8 @@ const ShoppingCart = () => {
       user: localStorage.getItem("username"),
       cost: cost,
     });
+    setPurchasedData(cart); 
+    setPurchasedData(purchaseData => purchaseData.concat(localStorage.getItem("username")));
     localStorage.removeItem("cart");
     axios({
       method: "post",
@@ -104,6 +107,19 @@ const ShoppingCart = () => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(cart));
   }, [cart]);
 
+  useEffect(() => {
+   console.log(purchaseData);
+   axios({
+    method: "post",
+    url: "http://localhost/send_cart.php",
+    headers: { "content-type": "application/json" },
+    data: purchaseData,
+  })
+    .catch((err) => {
+      console.log(err);
+    });
+  }, [purchaseData]);
+
   if (isLoading) {
     return <div className="App">Loading...</div>;
   }
@@ -127,6 +143,8 @@ const ShoppingCart = () => {
         console.log(err);
       });
   }
+
+
 
   return (
     <div>

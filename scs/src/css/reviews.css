@@ -89,7 +89,7 @@ textarea.materialize-textarea {
     margin-top: 12vh !important;
 }
 
-.input-field [type=text] {
+.reviews.input-field [type=text]{
     color: white;
 }
 

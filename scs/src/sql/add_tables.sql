@@ -80,6 +80,12 @@ CREATE TABLE IF NOT EXISTS Orders (
 	salt VARCHAR(50)
 );
 
+CREATE TABLE IF NOT EXISTS Purchased (
+    purchase_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT REFERENCES Users(user_id) ON DELETE CASCADE,
+    prod_id INT REFERENCES Product(prod_id) ON DELETE CASCADE
+);
+
 CREATE TABLE IF NOT EXISTS Error (
     error_text VARCHAR(50) PRIMARY KEY
 );

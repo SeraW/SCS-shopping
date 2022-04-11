@@ -61,6 +61,10 @@ body {
   margin-top: 1vh !important;
 }
 
+.reviews.input-field[type=text]{
+  color: black !important;
+}
+
 @media only screen and (max-width: 1600px) {
   .card.horizontal .card-image{
     display: none;

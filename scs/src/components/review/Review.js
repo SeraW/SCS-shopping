@@ -11,6 +11,7 @@ const Review = () => {
   const [didSubmit, setDidSubmit] = useState(false);
   const [chosenReview, setChosenReview] = useState();
   const [getProductReview, setGetProductReview] = useState([]);
+  const [productToReview, setProductToReview] = useState([]);
   var star = "star_rate";
 
   useEffect(() =>{
@@ -35,10 +36,21 @@ const Review = () => {
         method: 'post',
         url: 'http://localhost/get_review_user.php',
         headers: { 'content-type': 'application/json' },
-        data:""
+        data:localStorage.getItem('username')
       })
       .then(res =>{
         setReviewUsers(res.data);
+      }) .catch(err =>{ 
+        console.log(err);
+      })
+      axios({
+        method: 'post',
+        url: 'http://localhost/get_products.php',
+        headers: { 'content-type': 'application/json' },
+        data: localStorage.getItem('username')
+      })
+      .then(res =>{
+        setProductToReview(res.data);
       }) .catch(err =>{ 
         console.log(err);
       })
@@ -57,13 +69,15 @@ const Review = () => {
 
   const handleSubmit =  (e) => {
     e.preventDefault();
-    setSubmitReview({
-      prod_name: e.target[0].value,
-      rate: e.target[1].value,
-      user: localStorage.getItem('username'),
-      text: e.target[2].value
-    });
-    setDidSubmit(true);
+      if (e.target[0].value !=""){
+      setSubmitReview({
+        prod_name: e.target[0].value,
+        rate: e.target[1].value,
+        user: localStorage.getItem('username'),
+        text: e.target[2].value
+      });
+      setDidSubmit(true);
+    }
   }
 
   useEffect(() => {
@@ -104,8 +118,11 @@ const Review = () => {
       shift:0,
       padding:20,
     });
-    console.log(getProductReview)
   }, [getProductReview])
+
+  useEffect(() => {
+   console.log(getProducts)
+  }, [getProducts])
 
 
 
@@ -194,8 +211,8 @@ const Review = () => {
           <label>Product</label>
           <select className="browser-default choice" id="selection" name="prodname">
           {
-            getProducts.map((item, index) => {
-                return <option key={index} value={getProducts[index].prod_name}>{getProducts[index].prod_name}</option>
+            productToReview.map((item, index) => {
+                return <option key={index} value={productToReview[index].prod_name}>{productToReview[index].prod_name}</option>
             })
           }
           </select>
@@ -212,7 +229,7 @@ const Review = () => {
           </div>
           </div>
           <div className="row">
-            <div className="input-field s12 col m12 l10 offset-l1">
+            <div className="input-field reviews s12 col m12 l10 offset-l1">
               <textarea id="reviewarea" name="reviewarea" className="materialize-textarea" type="text" data-length="500"></textarea>
               <label for="reviewarea">Type your review here</label>
             </div>
@@ -237,7 +254,7 @@ const Review = () => {
             <option value="">Select Product</option>
             {
               getProducts.map((item, index) => {
-                  return <option key={index} value={getProducts[index].prod_name}>{getProducts[index].prod_name}</option>
+                  return <option key={index} value={getProducts[index]?.prod_name}>{getProducts[index]?.prod_name}</option>
               })
             }
             </select>

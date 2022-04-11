@@ -55,9 +55,9 @@ const Login = () => {
             <h1>Sign <span>In</span></h1>
             <form onSubmit={handleSubmit}>
                 <label for="username" style={{width:"90%"}}>Username</label>
-                <input id="username bar" type="text" name = "username" style={{width:"90%"}}  required/><br/>
+                <input className="login-input" id="username bar" type="text" name = "username" style={{width:"90%"}}  required/><br/>
                 <label for="password" style={{width:"90%"}}>Password</label>
-                <input id="password bar" type="password" name="password" style={{width:"90%"}}  required/><br/>
+                <input className="login-input" id="password bar" type="password" name="password" style={{width:"90%"}}  required/><br/>
                 <span className="helper-text" data-error="wrong" data-success="right">Don't have an account? <Link to="/register"><a><u>Create an Account</u></a></Link></span><br/>
                 <button className="btn save-button" type="submit" name="signin" style={{margintop:"30px",background:"#149BBB"}}>Sign In
                     <i className="material-icons right">send</i>
