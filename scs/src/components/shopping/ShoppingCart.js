@@ -2,6 +2,8 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import "../../css/shoppingcart.css";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+
 import {
   GoogleMap,
   LoadScript,
@@ -27,6 +29,7 @@ const ShoppingCart = () => {
   const [car, setCar] = useState("");
   const [submitPurchase, setSubmitPurchase] = useState([]);
   const [shippingCost, setShipping] = useState(0);
+  const navigate = useNavigate();
 
   const LOCAL_STORAGE_KEY = "cart";
   var cartCount = 0;
@@ -58,7 +61,19 @@ const ShoppingCart = () => {
     localStorage.removeItem("cart");
     //window.location = '/invoice';
     //return false;
-
+    axios({
+      method: "post",
+      url: "http://localhost/submit_purchase.php",
+      headers: { "content-type": "application/json" },
+      data: submitPurchase,
+    })
+      .then((res) => {
+        window.location = "/invoice";
+        return false;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   useEffect(() => {
@@ -67,16 +82,10 @@ const ShoppingCart = () => {
       url: "http://localhost/submit_purchase.php",
       headers: { "content-type": "application/json" },
       data: submitPurchase,
-    })
-    .then((res) => {
-      console.log("YOOOOOOOOOOOOOO")
-      console.log(res);
-    })
-    .catch((err) => {
+    }).catch((err) => {
       console.log(err);
     });
   }, [submitPurchase]);
-
 
   const directionsCallback = React.useCallback((res) => {
     //console.log(res);
@@ -261,7 +270,7 @@ const ShoppingCart = () => {
                 style={{ marginTop: "30px", background: "#149BBB" }}
               >
                 Place Order
-              </button> 
+              </button>
             </form>
           </div>
 
