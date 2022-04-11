@@ -23,7 +23,7 @@ const Review = () => {
       });
       axios({
         method: 'post',
-        url: 'http://localhost/review.php',
+        url: 'http://localhost/scs/src/api/review.php',
         headers: { 'content-type': 'application/json' },
         data:""
       })
@@ -34,7 +34,7 @@ const Review = () => {
       })
       axios({
         method: 'post',
-        url: 'http://localhost/get_review_user.php',
+        url: 'http://localhost/scs/src/api/get_review_user.php',
         headers: { 'content-type': 'application/json' },
         data:localStorage.getItem('username')
       })
@@ -45,7 +45,7 @@ const Review = () => {
       })
       axios({
         method: 'post',
-        url: 'http://localhost/get_products.php',
+        url: 'http://localhost/scs/src/api/get_products.php',
         headers: { 'content-type': 'application/json' },
         data: localStorage.getItem('username')
       })
@@ -56,7 +56,7 @@ const Review = () => {
       })
       axios({
         method: 'post',
-        url: 'http://localhost/select.php',
+        url: 'http://localhost/scs/src/api/select.php',
         headers: { 'content-type': 'application/json' },
         data: "product"
       })
@@ -83,7 +83,7 @@ const Review = () => {
   useEffect(() => {
     axios({
       method: 'post',
-      url: 'http://localhost/submit_review.php',
+      url: 'http://localhost/scs/src/api/submit_review.php',
       headers: { 'content-type': 'application/json' },
       data: submitReview
     })
@@ -96,7 +96,7 @@ const Review = () => {
     if(chosenReview !== ""){
       axios({
         method: 'post',
-        url: 'http://localhost/get_product_review.php',
+        url: 'http://localhost/scs/src/api/get_product_review.php',
         headers: { 'content-type': 'application/json' },
         data: chosenReview
       })

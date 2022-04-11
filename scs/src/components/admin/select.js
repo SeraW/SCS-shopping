@@ -23,7 +23,7 @@ const Select = () => {
       if (tables != ""){
         axios({
           method: 'post',
-          url: 'http://localhost/select.php',
+          url: 'http://localhost/scs/src/api/select.php',
           headers: { 'content-type': 'application/json' },
           data:tables
         })

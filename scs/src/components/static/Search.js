@@ -10,7 +10,7 @@ const Search = () => {
     if (e.target[0].id === "userid"){
       axios({
         method: 'post',
-        url: 'http://localhost/search.php',
+        url: 'http://localhost/scs/src/api/search.php',
         headers: { 'content-type': 'application/json' },
         data:{userid: e.target[0].value}
       })
@@ -24,7 +24,7 @@ const Search = () => {
     }else if (e.target[0].id === "orderid"){
       axios({
         method: 'post',
-        url: 'http://localhost/search.php',
+        url: 'http://localhost/scs/src/api/search.php',
         headers: { 'content-type': 'application/json' },
         data:{orderid: e.target[0].value}
       })

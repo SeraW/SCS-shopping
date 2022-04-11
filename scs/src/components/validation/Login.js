@@ -9,7 +9,7 @@ const Login = () => {
     if (loginInfo !== {}){
       axios({
         method: 'post',
-        url: 'http://localhost/loginval.php',
+        url: 'http://localhost/scs/src/api/loginval.php',
         headers: { 'content-type': 'application/json' },
         data:loginInfo
       })
@@ -34,7 +34,7 @@ const Login = () => {
     console.log(loginInfo)
     axios({
       method: 'post',
-      url: 'http://localhost/loginval.php',
+      url: 'http://localhost/scs/src/api/loginval.php',
       headers: { 'content-type': 'application/json' },
       data:loginInfo
     })

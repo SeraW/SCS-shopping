@@ -62,7 +62,7 @@ const ShoppingCart = () => {
     localStorage.removeItem("cart");
     axios({
       method: "post",
-      url: "http://localhost/submit_purchase.php",
+      url: "http://localhost/scs/src/api/submit_purchase.php",
       headers: { "content-type": "application/json" },
       data: submitPurchase,
     })
@@ -78,7 +78,7 @@ const ShoppingCart = () => {
   useEffect(() => {
     axios({
       method: "post",
-      url: "http://localhost/submit_purchase.php",
+      url: "http://localhost/scs/src/api/submit_purchase.php",
       headers: { "content-type": "application/json" },
       data: submitPurchase,
     }).catch((err) => {
@@ -111,7 +111,7 @@ const ShoppingCart = () => {
    console.log(purchaseData);
    axios({
     method: "post",
-    url: "http://localhost/send_cart.php",
+    url: "http://localhost/scs/src/api/send_cart.php",
     headers: { "content-type": "application/json" },
     data: purchaseData,
   })
@@ -127,7 +127,7 @@ const ShoppingCart = () => {
   function generateProducts() {
     axios({
       method: "post",
-      url: "http://localhost/get_checkout.php",
+      url: "http://localhost/scs/src/api/get_checkout.php",
       headers: { "content-type": "application/json" },
       data: { user: localStorage.getItem("username") },
     })
@@ -336,7 +336,7 @@ const ShoppingCart = () => {
                 const imgurl = product[item - 1]["img_url"];
 
                 //I'VE GOT NO CLUE HOW TO MAKE THE LINE BELOW NOT HARDCODED
-                const img = "http://localhost/CPS630/scs/src/" + imgurl;
+                const img = "http://localhost/scs/src/" + imgurl;
 
                 return (
                   <div class="card horizontal small" id={"card" + cartCount}>
