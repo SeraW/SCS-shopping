@@ -25,11 +25,13 @@ const ShoppingCart = () => {
   const [destination, setDestination] = React.useState(null);
   const [branch, setBranch] = useState("");
   const [car, setCar] = useState("");
+  const [submitPurchase, setSubmitPurchase] = useState([])
+  const [shippingCost, setShipping] = useState(0);
 
   const LOCAL_STORAGE_KEY = "cart";
   var cartCount = 0;
   var total = 0;
-
+  var cost = 0;
   const containerStyle = {
     width: "100%",
     height: "500px",
@@ -40,8 +42,41 @@ const ShoppingCart = () => {
     lng: -79.38,
   };
 
+  const handleSubmit =  (e) => {
+    e.preventDefault();
+    console.log(e.target[0].value)
+    console.log(e.target[1].value)
+    console.log(e.target[2].value)
+    console.log(cost)
+    console.log(localStorage.getItem('username'))
+    setSubmitPurchase({
+      branch: e.target[0].value,
+      car: e.target[1].value,
+      shipping: e.target[2].value,
+      user: localStorage.getItem('username'),
+      cost: cost
+    });
+    submitPurchase(true);
+  }
+
+  useEffect(() => {
+    axios({
+      method: 'post',
+      url: 'http://localhost/submit_purchase.php',
+      headers: { 'content-type': 'application/json' },
+      data: submitPurchase
+    })
+   .catch(err =>{ 
+      console.log(err);
+    })  
+  }, [submitPurchase])
+
+  useEffect(() => {
+    console.log(shippingCost)
+  })
+
   const directionsCallback = React.useCallback((res) => {
-    console.log(res);
+    //console.log(res);
     if (res !== null) {
       if (res.status === "OK") {
         setResponse(res);
@@ -118,9 +153,9 @@ const ShoppingCart = () => {
               </div>
             </div>
 
-            <form id="order" action="process_order.php" method="post">
+            <form id="order" method="post" onSubmit={handleSubmit}>
               <div
-                class="input-field col s12"
+                className="input-field col s12"
                 onChange={(e) => {
                   const selectedTable = e.target.value;
                   setDestination(selectedTable);
@@ -166,7 +201,15 @@ const ShoppingCart = () => {
                   })}
                 </select>
               </div>
-              <div class="input-field col s12">
+              <div
+                className="input-field col s12"
+                onChange={(e) => {
+                  const shipCost = e.target.value;
+                  //console.log(e.target.value)
+                  setShipping(shipCost);
+
+                }}
+              >
                 <select
                   className="browser-default choice"
                   name="date"
@@ -176,9 +219,9 @@ const ShoppingCart = () => {
                   <option value="" disabled selected>
                     Choose a Delivery Option
                   </option>
-                  <option value="7">FREE - No-Rush Shipping</option>
-                  <option value="1">$6.99 - One-Day Shipping</option>
-                  <option value="2">$5.99 - Two-Day Shipping</option>
+                  <option value="0">FREE - No-Rush Shipping</option>
+                  <option value="6.99">$6.99 - One-Day Shipping</option>
+                  <option value="5.99">$5.99 - Two-Day Shipping</option>
                 </select>
               </div>
               <input
@@ -216,15 +259,17 @@ const ShoppingCart = () => {
                     {cart.map((item) => {
                       const price = product[item - 1]["prod_price"];
                       total += parseFloat(price);
-                    })}
+                      cost = Math.round((total*1.13-total*0.15+parseFloat(shippingCost))*100)/100
+                    })
+                    }
 
                     <p id="subtotal">
                       {"Subtotal: $" + Math.round(total * 100) / 100}
                     </p>
-                    {/*               <p id="shipping">Shipping & Handling: $0</p>
-                  <p>Taxes: $' . number_format((float)$total * .13, 2, '.', '') . '</p>
-                  <p id="total">TOTAL: $' . number_format((float)$total * 1.13, 2, '.', '') . '</p>
-                  */}
+                  <p id="shipping">{"Shipping & Handling: $"+ shippingCost}</p>
+                  <p>{"Taxes: $" + Math.round((total*0.13) * 100) / 100}</p>
+                  <p>{"Savings: -$" + Math.round((total*0.15) * 100) / 100}</p>
+                  <p id="total">{"TOTAL: $" + cost}</p>
                   </div>
                 </div>
               </div>
