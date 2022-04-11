@@ -67,7 +67,12 @@ const ShoppingCart = () => {
       url: "http://localhost/submit_purchase.php",
       headers: { "content-type": "application/json" },
       data: submitPurchase,
-    }).catch((err) => {
+    })
+    .then((res) => {
+      console.log("YOOOOOOOOOOOOOO")
+      console.log(res);
+    })
+    .catch((err) => {
       console.log(err);
     });
   }, [submitPurchase]);
@@ -106,8 +111,7 @@ const ShoppingCart = () => {
       data: { user: localStorage.getItem("username") },
     })
       .then((res) => {
-        console.log("THEEEEEEEEEEE")
-        console.log(res.data);
+        //console.log(res.data);
         setProduct(res.data.product);
         setOrigin(res.data.address);
         setBranch(res.data.branch);
