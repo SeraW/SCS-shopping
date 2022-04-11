@@ -131,7 +131,7 @@ const Products = () => {
                         id={"remove" + cartCount}
                         onClick={(e) => removeCart(e)}
                       >
-                        <i id={"removes" + cartCount} class="material-icons">
+                        <i id={"removes" + cartCount} class="material-icons" style={{color:"#149bbb"}}>
                           delete
                         </i>
                       </a>
