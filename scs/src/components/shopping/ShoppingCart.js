@@ -25,7 +25,7 @@ const ShoppingCart = () => {
   const [destination, setDestination] = React.useState(null);
   const [branch, setBranch] = useState("");
   const [car, setCar] = useState("");
-  const [submitPurchase, setSubmitPurchase] = useState([])
+  const [submitPurchase, setSubmitPurchase] = useState([]);
   const [shippingCost, setShipping] = useState(0);
 
   const LOCAL_STORAGE_KEY = "cart";
@@ -42,38 +42,36 @@ const ShoppingCart = () => {
     lng: -79.38,
   };
 
-  const handleSubmit =  (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target[0].value)
-    console.log(e.target[1].value)
-    console.log(e.target[2].value)
-    console.log(cost)
-    console.log(localStorage.getItem('username'))
     setSubmitPurchase({
       branch: e.target[0].value,
       car: e.target[1].value,
       shipping: e.target[2].value,
-      user: localStorage.getItem('username'),
-      cost: cost
+      name: e.target[3].value,
+      num: e.target[4].value,
+      expiry: e.target[5].value,
+      cvv: e.target[6].value,
+      user: localStorage.getItem("username"),
+      cost: cost,
     });
-    submitPurchase(true);
-  }
+    localStorage.removeItem("cart");
+    //window.location = '/invoice';
+    //return false;
+
+  };
 
   useEffect(() => {
     axios({
-      method: 'post',
-      url: 'http://localhost/submit_purchase.php',
-      headers: { 'content-type': 'application/json' },
-      data: submitPurchase
-    })
-   .catch(err =>{ 
+      method: "post",
+      url: "http://localhost/submit_purchase.php",
+      headers: { "content-type": "application/json" },
+      data: submitPurchase,
+    }).catch((err) => {
       console.log(err);
-    })  
-  }, [submitPurchase])
+    });
+  }, [submitPurchase]);
 
-  useEffect(() => {
-    console.log(shippingCost)
-  })
 
   const directionsCallback = React.useCallback((res) => {
     //console.log(res);
@@ -103,10 +101,12 @@ const ShoppingCart = () => {
   function generateProducts() {
     axios({
       method: "post",
-      url: "http://localhost/test.php",
+      url: "http://localhost/get_checkout.php",
       headers: { "content-type": "application/json" },
+      data: { user: localStorage.getItem("username") },
     })
       .then((res) => {
+        console.log("THEEEEEEEEEEE")
         console.log(res.data);
         setProduct(res.data.product);
         setOrigin(res.data.address);
@@ -207,7 +207,6 @@ const ShoppingCart = () => {
                   const shipCost = e.target.value;
                   //console.log(e.target.value)
                   setShipping(shipCost);
-
                 }}
               >
                 <select
@@ -224,6 +223,27 @@ const ShoppingCart = () => {
                   <option value="5.99">$5.99 - Two-Day Shipping</option>
                 </select>
               </div>
+
+              <div className="input-field col s12">
+                <input id="first_name" type="text" class="validate" />
+                <label for="first_name">Name on Card</label>
+              </div>
+
+              <div className="input-field col s12">
+                <input id="card_num" type="text" class="validate" />
+                <label for="card_num">Card Number</label>
+              </div>
+
+              <div className="input-field col s6">
+                <input id="expires" type="text" class="validate" />
+                <label for="expires">Expiry Date</label>
+              </div>
+
+              <div className="input-field col s6">
+                <input id="cvv" type="text" class="validate" />
+                <label for="cvv">CVV</label>
+              </div>
+
               <input
                 type="hidden"
                 id="FinalValue"
@@ -237,7 +257,7 @@ const ShoppingCart = () => {
                 style={{ marginTop: "30px", background: "#149BBB" }}
               >
                 Place Order
-              </button>
+              </button> 
             </form>
           </div>
 
@@ -259,17 +279,26 @@ const ShoppingCart = () => {
                     {cart.map((item) => {
                       const price = product[item - 1]["prod_price"];
                       total += parseFloat(price);
-                      cost = Math.round((total*1.13-total*0.15+parseFloat(shippingCost))*100)/100
-                    })
-                    }
+                      cost =
+                        Math.round(
+                          (total * 1.13 -
+                            total * 0.15 +
+                            parseFloat(shippingCost)) *
+                            100
+                        ) / 100;
+                    })}
 
                     <p id="subtotal">
                       {"Subtotal: $" + Math.round(total * 100) / 100}
                     </p>
-                  <p id="shipping">{"Shipping & Handling: $"+ shippingCost}</p>
-                  <p>{"Taxes: $" + Math.round((total*0.13) * 100) / 100}</p>
-                  <p>{"Savings: -$" + Math.round((total*0.15) * 100) / 100}</p>
-                  <p id="total">{"TOTAL: $" + cost}</p>
+                    <p id="shipping">
+                      {"Shipping & Handling: $" + shippingCost}
+                    </p>
+                    <p>{"Taxes: $" + Math.round(total * 0.13 * 100) / 100}</p>
+                    <p>
+                      {"Savings: -$" + Math.round(total * 0.15 * 100) / 100}
+                    </p>
+                    <p id="total">{"TOTAL: $" + cost}</p>
                   </div>
                 </div>
               </div>

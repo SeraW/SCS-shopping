@@ -72,7 +72,12 @@ CREATE TABLE IF NOT EXISTS Orders (
     user_id INT REFERENCES Users(user_id) ON DELETE CASCADE,
     trip_id INT REFERENCES Trip(trip_id) ON DELETE CASCADE,
     receipt_id INT REFERENCES Shopping(receipt_id) ON DELETE CASCADE,
-    branch_id FLOAT REFERENCES Branch(branch_id) ON DELETE CASCADE
+    branch_id FLOAT REFERENCES Branch(branch_id) ON DELETE CASCADE,
+	card_name VARCHAR(500),
+	card_num VARCHAR(500),
+	expiry VARCHAR(500),
+	cvv VARCHAR(500),
+	salt VARCHAR(50)
 );
 
 CREATE TABLE IF NOT EXISTS Error (
@@ -84,9 +89,9 @@ CREATE TABLE IF NOT EXISTS Messages (
 );
 
 INSERT INTO Users (first_name, last_name, phone, email, addy, postal, login_id, login_salt, login_password, balance, admin_val)
-VALUES ('Dave', 'Tran', '000-000-0000', 'dave.tran@gmail.com', '2598 Islington Ave', 'M8V3B6', 'davetran', 'vW4SJfvFJf9hkUCP', 'ffa4fb0d0044e3f0384d75e881fd5e1c', 500.00, true),
-        ('Anthony', 'Tran', '000-000-0001', 'atran@gmail.com', '3395 Islington Ave', 'M8V3B6', 'atran', '5EtA3f0orN4Ztwzf', 'fe6b3f9b3c01b91d3278d241f833e7eb' , 500.00, true),
-        ('Sera', 'Wong', '000-000-0002', 'swong@gmail.com', '3090 Wellington Street', 'M9C3J5', 'swong', 'b3/5KyIPaFMEfMyB', '86c9a1badb4cd57b4ee58884baf9e1f7', 500.00, true),
+VALUES ('Dave', 'Tran', '000-000-0000', 'dave.tran@gmail.com', 'Jane Finch Mall', 'M8V3B6', 'davetran', 'vW4SJfvFJf9hkUCP', 'ffa4fb0d0044e3f0384d75e881fd5e1c', 500.00, true),
+        ('Anthony', 'Tran', '000-000-0001', 'atran@gmail.com', 'Yorkdale', 'M8V3B6', 'atran', '5EtA3f0orN4Ztwzf', 'fe6b3f9b3c01b91d3278d241f833e7eb' , 500.00, true),
+        ('Sera', 'Wong', '000-000-0002', 'swong@gmail.com', 'Jane Finch Mall', 'M9C3J5', 'swong', 'b3/5KyIPaFMEfMyB', '86c9a1badb4cd57b4ee58884baf9e1f7', 500.00, true),
         ('Nanamin', 'Kento', '000-000-0003','nkento@gmail.com','4361 Yonge Street','M4W1J7','nkento','bHxMoqO6o6rihwuO','ffefb6e0063e8d342cfab1ab4ebcef1c',700.00, false),
         ('Seto', 'Kaiba', '000-000-0004', 'skaiba@gmail.com', '2514 Merton Street', 'M1L3K7', 'skaiba', 'AhOdbwsf6BcKF6kx', 'cbf720f7a3d7943c02af71e495143791', 500.00, false),
         ('Yae', 'Miko', '000-000-0005', 'ymiko@gmail.com', '1522 Adelaide St', 'M5H1P6', 'ymiko', 'j+BAsC+TjHCl9Vlt','6fedbd16b189161705dbfdf61a489837', 900.50, false);
@@ -140,7 +145,7 @@ VALUES (81.48, 0000),
         (107.03, 0001),
         (45.49, 0002);
 
-INSERT INTO Orders (date_issued, date_completed, order_price, payment_code, user_id, trip_id, receipt_id, branch_id)
-VALUES ('2022-01-20', '2022-01-25', 81.48, 0000, 0003, 0000, 0000, 0000),
-        ('2022-01-26', '2022-02-01', 107.03, 0001, 0004,0001, 0001, 0001),
-        ('2022-02-10', '2022-02-13', 45.49, 0002, 0005, 0002, 0002, 0002);
+INSERT INTO Orders (date_issued, date_completed, order_price, payment_code, user_id, trip_id, receipt_id, branch_id, card_name, card_num, expiry, cvv, salt)
+VALUES ('2022-01-20', '2022-01-25', 81.48, 0000, 0003, 0000, 0000, 0000, "Gawr Gura", "1234123412341234", "06/20", "420", "vW4SJfvFJf9hkUCP"),
+        ('2022-01-26', '2022-02-01', 107.03, 0001, 0004,0001, 0001, 0001, "Fischl Mona", "6969420696944200", "06/09", "690", "AhOdbwsf6BcKF6kx"),
+        ('2022-02-10', '2022-02-13', 45.49, 0002, 0005, 0002, 0002, 0002, "Predator", "4123456774652453", "12/25", "334", "bHxMoqO6o6rihwuO");
