@@ -20,23 +20,20 @@ const ShoppingCart = () => {
   const [product, setProduct] = useState([]);
   const [cart, setCart] = useState([]);
   const [isLoading, setLoading] = useState(true);
-  //const [branch, setBranch] = useState([]);
 
-  const [date, setDate] = useState("");
-  const [price, setPrice] = useState("");
   const [branch, setBranch] = useState("");
-  const [address, setAddress] = useState("");
+  //const [address, setAddress] = useState("");
+  let address = "";
   const [car, setCar] = useState("");
-  const [orderID, setOrderID] = useState("");
 
   const LOCAL_STORAGE_KEY = "cart";
   var cartCount = 0;
   var total = 0;
   //console.log(cart);
-
+  //console.log(address);
   const [response, setResponse] = React.useState(null);
-  const [origin, setOrigin] = React.useState("129 Firgrove Cres.");
-  const [destination, setDestination] = React.useState("Jane Finch Mall");
+  const [origin, setOrigin] = React.useState(null);
+  const [destination, setDestination] = React.useState(null);
 
   const containerStyle = {
     width: "100%",
@@ -48,21 +45,8 @@ const ShoppingCart = () => {
     lng: -79.38,
   };
 
-  const onClick = React.useCallback(() => {
-    setOrigin("1194 Weston Rd");
-    setDestination("350 Victoria St");
-  }, []);
-
-  const onMapClick = React.useCallback((...args) => {
-    console.log("onClick args: ", args);
-    console.log(destination);
-    console.log(origin);
-    console.log(response);
-  }, []);
-
   const directionsCallback = React.useCallback((res) => {
     console.log(res);
-
     if (res !== null) {
       if (res.status === "OK") {
         setResponse(res);
@@ -70,19 +54,6 @@ const ShoppingCart = () => {
         console.log("response: ", res);
       }
     }
-  }, []);
-
-  const directionsServiceOptions = React.useMemo(() => {
-    return {
-      destination: "1194 Weston Rd",
-      origin: "350 Victoria St",
-    };
-  }, []);
-
-  const directionsRendererOptions = React.useMemo(() => {
-    return {
-      directions: response,
-    };
   }, []);
 
   useEffect(() => {
@@ -108,7 +79,7 @@ const ShoppingCart = () => {
       .then((res) => {
         console.log(res.data);
         setProduct(res.data.product);
-        setAddress(res.data.address);
+        setOrigin(res.data.address);
         setBranch(res.data.branch);
         setCar(res.data.car);
         setLoading(false);
@@ -124,7 +95,7 @@ const ShoppingCart = () => {
         <div class="container">
           <div class="col s12 m12 l9">
             <h1>Checkout</h1>
-            <button className="btn btn-primary" type="button" onClick={onClick}>
+            <button className="btn btn-primary" type="button">
               Build Route
             </button>
             <div id="mapdiv" class="col s12 m12 l9">
@@ -133,14 +104,13 @@ const ShoppingCart = () => {
                   <GoogleMap
                     id="direction-example"
                     mapContainerStyle={containerStyle}
-                    zoom={2}
+                    zoom={9}
                     center={center}
-                    onClick={onMapClick}
                   >
                     {destination !== "" && origin !== "" && (
                       <DirectionsService
                         options={{
-                          destination: destination,
+                          destination,
                           origin,
                           travelMode: "DRIVING",
                         }}
@@ -157,7 +127,19 @@ const ShoppingCart = () => {
             </div>
 
             <form id="order" action="process_order.php" method="post">
-              <div class="input-field col s12">
+              <div
+                class="input-field col s12"
+                onChange={(e) => {
+                  const selectedTable = e.target.value;
+                  setDestination(selectedTable);
+
+                  console.log(address);
+
+                  //console.log("THE HIT")
+                  //console.log(selectedTable)
+                  //console.log(destination)
+                }}
+              >
                 <select
                   className="browser-default choice"
                   id="end"
