@@ -2,7 +2,6 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import "../../css/shoppingcart.css";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
 
 import {
   GoogleMap,
@@ -29,7 +28,6 @@ const ShoppingCart = () => {
   const [car, setCar] = useState("");
   const [submitPurchase, setSubmitPurchase] = useState([]);
   const [shippingCost, setShipping] = useState(0);
-  const navigate = useNavigate();
 
   const LOCAL_STORAGE_KEY = "cart";
   var cartCount = 0;
@@ -59,8 +57,6 @@ const ShoppingCart = () => {
       cost: cost,
     });
     localStorage.removeItem("cart");
-    //window.location = '/invoice';
-    //return false;
     axios({
       method: "post",
       url: "http://localhost/submit_purchase.php",
