@@ -27,7 +27,7 @@ const Products = () => {
   function generateProducts() {
     axios({
       method: "post",
-      url: "http://localhost/scs/src/api/select.php",
+      url: "http://localhost/Team30API/select.php",
       headers: { "content-type": "application/json" },
       data: "product",
     })
@@ -65,7 +65,7 @@ const Products = () => {
               const imgurl = tableData[tableindex][tableCol[3]];
 
               //I'VE GOT NO CLUE HOW TO MAKE THE LINE BELOW NOT HARDCODED
-              const img = "http://localhost/scs/src/" + imgurl;
+              const img = "http://localhost/Team30API/" + imgurl;
               return (
                 <div class="card" id={counter}>
                   <div class="card-image valign-wrapper" id="productsonly">
@@ -108,7 +108,7 @@ const Products = () => {
               const imgurl = tableData[item - 1]["img_url"];
 
               //I'VE GOT NO CLUE HOW TO MAKE THE LINE BELOW NOT HARDCODED
-              const img = "http://localhost/scs/src/" + imgurl;
+              const img = "http://localhost/Team30API/" + imgurl;
 
               return (
                 <div class="card horizontal" id={"card" + cartCount}>

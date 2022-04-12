@@ -17,7 +17,7 @@ const Navbar = () => {
     changeStatus(["Login", "Register"]);
     axios({
       method: 'post',
-      url: 'http://localhost/scs/src/api/logout.php',
+      url: 'http://localhost/Team30API/logout.php',
       headers: { 'content-type': 'application/json' }
     })
     .then(res =>{
@@ -33,7 +33,7 @@ const Navbar = () => {
     }
     axios({
       method: 'post',
-      url: 'http://localhost/scs/src/api/navbar.php',
+      url: 'http://localhost/Team30API/navbar.php',
       headers: { 'content-type': 'application/json' },
       data:{Username: username}
     })

@@ -9,7 +9,7 @@ const Register = () => {
     if (regInfo !== {}){
     axios({
       method: 'post',
-      url: 'http://localhost/scs/src/api/signup.php',
+      url: 'http://localhost/Team30API/signup.php',
       headers: { 'content-type': 'application/json' },
       data:regInfo
     })
@@ -41,7 +41,7 @@ const Register = () => {
     console.log(regInfo)
     axios({
       method: 'post',
-      url: 'http://localhost/scs/src/api/signup.php',
+      url: 'http://localhost/Team30API/signup.php',
       headers: { 'content-type': 'application/json' },
       data:regInfo
     })
