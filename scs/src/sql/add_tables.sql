@@ -115,7 +115,24 @@ VALUES ('I enjoyed the blender', 4, 7, 1),
         ('Fast delivery and works well', 5, 7, 2),
         ('Blends well I like it', 5, 7, 3),
         ('Blender broke within 2 weeks of getting it. I would rate 0 stars if I could', 1, 7, 4),
-        ('I enjoyed the waffle maker', 5, 6, 5);
+        ('I enjoyed the waffle maker', 5, 6, 5), 
+        ('All of my waffles come out in funny shapes, DO NOT RECOMMEND', 2, 6, 1),
+        ('All of my waffles come out in cool shapes, highly recommend', 5, 6, 2),
+        ('I thought this kettle would be battery powered', 3, 5, 3),
+        ('I ordered just one kettle, but they sent me two!', 5, 5, 4),
+        ('I think I ordered the wrong thing', 5, 5, 5),
+        ('The toaster either burns my toast or does not cook it at all', 2, 4, 6),
+        ('It works as expected.',5, 4, 1),
+        ('The rice cooker has lots of different settings', 5, 3, 2),
+        ('I have been using it for a year now, no problems so far',5, 3, 3),
+        ('It needs rice to cook', 4, 3, 2),
+        ('Its a microwave',5,2,1),
+        ('It can only cook for 30 seconds, there is no other option', 1,2,2),
+        ('Where am I?',5,2,3),
+        ('The coffee machine is a must-have in any household',5,1,4),
+        ('The shipping took too long so I ended up returning this one and getting a different one',2,1,5),
+        ('The coffee gave me a headache every time I drank it',3,1,6);
+
 
          
 
