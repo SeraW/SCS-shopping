@@ -62,7 +62,7 @@ const ShoppingCart = () => {
     localStorage.removeItem("cart");
     axios({
       method: "post",
-      url: "http://localhost/Team30API/submit_purchase.php",
+      url: "http://localhost/Team30API/api/submit_purchase.php",
       headers: { "content-type": "application/json" },
       data: submitPurchase,
     })
@@ -78,7 +78,7 @@ const ShoppingCart = () => {
   useEffect(() => {
     axios({
       method: "post",
-      url: "http://localhost/Team30API/submit_purchase.php",
+      url: "http://localhost/Team30API/api/submit_purchase.php",
       headers: { "content-type": "application/json" },
       data: submitPurchase,
     }).catch((err) => {
@@ -111,7 +111,7 @@ const ShoppingCart = () => {
    console.log(purchaseData);
    axios({
     method: "post",
-    url: "http://localhost/Team30API/send_cart.php",
+    url: "http://localhost/Team30API/api/send_cart.php",
     headers: { "content-type": "application/json" },
     data: purchaseData,
   })
@@ -127,7 +127,7 @@ const ShoppingCart = () => {
   function generateProducts() {
     axios({
       method: "post",
-      url: "http://localhost/Team30API/get_checkout.php",
+      url: "http://localhost/Team30API/api/get_checkout.php",
       headers: { "content-type": "application/json" },
       data: { user: localStorage.getItem("username") },
     })

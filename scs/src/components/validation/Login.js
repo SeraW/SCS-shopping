@@ -9,7 +9,7 @@ const Login = () => {
     if (loginInfo !== {}){
       axios({
         method: 'post',
-        url: 'http://localhost/Team30API/loginval.php',
+        url: 'http://localhost/Team30API/api/loginval.php',
         headers: { 'content-type': 'application/json' },
         data:loginInfo
       })
@@ -34,7 +34,7 @@ const Login = () => {
     console.log(loginInfo)
     axios({
       method: 'post',
-      url: 'http://localhost/Team30API/loginval.php',
+      url: 'http://localhost/Team30API/api/loginval.php',
       headers: { 'content-type': 'application/json' },
       data:loginInfo
     })

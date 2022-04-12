@@ -23,7 +23,7 @@ const Select = () => {
       if (tables != ""){
         axios({
           method: 'post',
-          url: 'http://localhost/Team30API/select.php',
+          url: 'http://localhost/Team30API/api/select.php',
           headers: { 'content-type': 'application/json' },
           data:tables
         })

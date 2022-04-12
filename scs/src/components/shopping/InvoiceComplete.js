@@ -13,7 +13,7 @@ const InvoiceComplete = () => {
   useEffect(()=>{
       axios({
         method: 'post',
-        url: 'http://localhost/Team30API/invoice.php',
+        url: 'http://localhost/Team30API/api/invoice.php',
         headers: { 'content-type': 'application/json' }
       })
       .then(res =>{
