@@ -1,1 +1,1 @@
-# CPS630
+SCS Shopping
